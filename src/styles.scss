@@ -1,6 +1,12 @@
 :root {
   --main-color: #145db8;
   --secondary-color: #e8eff8;
+  --main-font: Georgia, "Times New Roman", Times, serif;
+}
+
+
+body {
+  font-family: var(--main-font);
 }
 .btn-main {
   background-color: var(--main-color);

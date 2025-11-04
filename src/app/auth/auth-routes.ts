@@ -41,7 +41,7 @@ export const AUTH_ROUTES: Routes = [
             (m) => m.ResetPasswordComponent
           ),
       },
-      { path: '', redirectTo: 'login', pathMatch: 'full' },
+      { path: '', redirectTo: 'sign-in', pathMatch: 'full' },
     ],
   },
 ];

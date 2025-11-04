@@ -1,0 +1,60 @@
+.introSection img:nth-child(1) {
+    width: 80%;
+
+}
+
+.introSection img:nth-child(2) {
+    width: 60%;
+}
+
+.introSection img:nth-child(3) {
+    width: 25%;
+}
+
+
+
+.rotate-90 {
+    // transform: rotate(90deg);
+    transform: rotate(31deg);
+}
+
+.rotate-336 {
+    transform: rotate(336deg);
+}
+
+.arrowImage {
+    position: absolute;
+    top: 90%;
+    right: 20%;
+
+}
+
+.locationImage {
+    position: absolute;
+    left: 5%;
+    top: 10%;
+
+}
+
+
+// /* 📱 موبايل (أقل من 768px) */
+// @media (max-width: 768px) {
+
+// }
+
+// /* 💻 تابلت (بين 769px و 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .arrowImage {
+        position: absolute;
+        top: 80%;
+        right: 5%;
+
+    }
+
+    .locationImage {
+        position: absolute;
+        left: 5%;
+        top: 10%;
+
+    }
+}
