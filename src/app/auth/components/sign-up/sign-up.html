@@ -1,0 +1,158 @@
+<p class="text-start pt-5">
+  <img src="./assets/images/BsHeartPulse.jpg" alt="Heart Pulse logo" />
+</p>
+<div
+  class="form-container d-flex justify-content-center justify-content-xl-start g-2 ms-xl-5 ps-xl-5 mt-xl-5"
+>
+  <form
+    [formGroup]="form"
+    class="overflow-hidden p-2 d-flex align-items-center justify-content-center flex-column"
+  >
+    <!-- @let name = form.controls.name; @let email = form.controls.email; -->
+
+    <!-- Uses Email and Password -->
+    <div class="header text-center">
+      <h1 class="h2">Sign up</h1>
+      <p class="text-muted">Please provide all information required to create your account</p>
+    </div>
+    <div class="form-controls w-100">
+      <div class="form-input mb-1">
+        <label class="d-block p-1">Full Name</label>
+        <input
+          formControlName="name"
+          class="w-100 border rounded p-2"
+          type="Full Name"
+          name="name"
+
+          placeholder="Full Name"
+        />
+        @if(form.get('name')?.hasError('required') && form.get('name')?.touched){
+        <span class="text-danger">Name is required </span>
+        }@else if(form.get('name')?.hasError('minlength') && form.get('name')?.touched){
+        <span class="text-danger">minlength is 3</span>
+        }
+        @else if(form.get('name')?.hasError('maxlength') && form.get('name')?.touched){
+        <span class="text-danger">maxlength is 10 </span>
+        }
+        @if(form.get('name')?.hasError('name') && form.get('name')?.touched){
+        <span class="text-danger">name is not valid</span>
+        }
+      </div>
+      <div class="form-input">
+        <label class="d-block p-1">Email</label>
+        <input
+          formControlName="email"
+          class="w-100 border rounded p-2"
+          type="email"
+          name="email"
+          placeholder="Email"
+        />
+
+        <!-- <div class="error" [class.visible]="email.invalid && email.touched">
+            @if (email.hasError('required') && email.touched){
+              <p>
+                Your email is required!
+              </p>
+            } @else{
+              <p>
+                Please enter a valid email address!
+              </p>
+            }
+        </div> -->
+
+        @if(form.get('email')?.hasError('required') && form.get('email')?.touched){
+        <span class="text-danger">Email is required </span>
+        } @if(form.get('email')?.hasError('email') && form.get('email')?.touched){
+        <span class="text-danger">Email is not valid</span>
+        }
+
+      </div>
+      <!-- <div class="form-input">
+        <label class="d-block p-1">Password</label>
+        <input class="w-100 border rounded p-2" type="password" name="password" placeholder="Password">
+      </div> -->
+      <div class="form-controls w-100 mb-0">
+        <label class="d-block p-1">Phone Number</label>
+        <div
+          class="form-input mb-2 border rounded d-flex justify-content-center align-items-center"
+        >
+          <div class="dropdown">
+            <button
+              class="btn dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton2"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Flag icon
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+              <li><img src="../../../../assest/images/auth-images/Flag.jpg" alt="Egypt Flag" /></li>
+              <li>
+                <img src="../../../../assest/images/auth-images/germany.png" alt="Germany Flag" />
+              </li>
+            </ul>
+          </div>
+          <input
+            class="w-100 border-0 rounded p-2"
+            type="text"
+            name="phoneNumber"
+            placeholder="Enter your number"
+          />
+        </div>
+        <div class="validation-message mb-4">
+          <!-- @if(!isPhoneValid()){
+          <p class="text-danger mt-1">❌ Enter a valid phone number (10-15 digits)</p>
+          }@else{
+            <p class="text-success mt-1">✅ Phone number looks good!</p>
+          } -->
+        </div>
+      </div>
+      <div class="form-button mb-2">
+        <a
+          class="btn btn-primary border w-100 d-flex align-items-center justify-content-center gap-2"
+        >
+          Sign up</a
+        >
+      </div>
+    </div>
+    <!-- Uses Full Name and Email, Password/-->
+
+    <!-- Divider -->
+    <div class="d-flex align-items-center mb-2 w-100">
+      <hr class="flex-grow-1" />
+      <span class="px-2 text-muted">or</span>
+      <hr class="flex-grow-1" />
+    </div>
+    <!-- Google Sign-In -->
+    <button
+      type="button"
+      class="btn btn-light border w-100 d-flex align-items-center justify-content-center gap-2 mb-3"
+    >
+      <img src="https://www.svgrepo.com/show/355037/google.svg" alt="Google" width="20" />
+      Sign in with Google
+    </button>
+    <p class="text-muted text-center">
+      Already have an account?
+      <a routerLink="../sign-in" class="text-primary text-decoration-none">Sign in</a>
+    </p>
+  </form>
+</div>
+
+
+
+<!-- <div class="form-input mb-4">
+          <label class="d-block p-1">Email</label>
+          <input class="w-100 border rounded p-2" #emailCtrl="ngModel" type="email" [(ngModel)]="email"
+          (input)="validateEmail()" placeholder="Email">
+             Validation messages
+            @if(isValidEmail && emailCtrl.untouched){
+              <p  class="text-danger">
+                  ❌ Please enter a valid email address
+              </p>
+            }@else if(!isValidEmail && emailCtrl.untouched){
+              <p  class="text-success">
+                ✅ Email looks good!
+              </p>
+            }
+        </div> -->
