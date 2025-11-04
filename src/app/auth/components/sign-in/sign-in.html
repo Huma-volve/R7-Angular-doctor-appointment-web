@@ -1,0 +1,90 @@
+<p class="text-start pt-5">
+  <img src="./assets/images/BsHeartPulse.jpg" alt="Heart Pulse logo"/>
+</p>
+<div
+  class="form-container d-flex justify-content-center justify-content-xl-start g-2 ms-xl-5 ps-xl-5 mt-xl-5"
+>
+  <form class="overflow-hidden p-5 d-flex align-items-center justify-content-center flex-column">
+    <!-- Uses Email and Password -->
+    <!-- <div class="header text-center">
+      <h1 class="h2">Sign in</h1>
+      <p class="text-muted">Please provide all information required to create your account</p>
+    </div>
+    <div class="form-controls w-100">
+      <div class="form-input">
+        <label class="d-block p-1">Email</label>
+        <input class="w-100 border rounded p-2" type="email" name="email" placeholder="Email">
+      </div>
+      <div class="form-input">
+        <label class="d-block p-1">Password</label>
+        <input class="w-100 border rounded p-2" type="password" name="password" placeholder="Password">
+        <p class="text-primary">Forget the password?</p>
+      </div>
+      <div class="form-button">
+        <a class="btn btn-primary border w-100 d-flex align-items-center justify-content-center gap-2 mb-3"> Sign in</a>
+      </div>
+    </div> -->
+    <!-- Uses Email and Password/-->
+
+    <!-- Sign in With Number -->
+
+    <div class="header text-center mb-2">
+      <h1 class="h2">Sign in</h1>
+      <p class="text-muted">Please Enter your phone number</p>
+    </div>
+    <div class="form-controls w-100 mb-0">
+      <div class="form-input mb-4 border rounded d-flex justify-content-center align-items-center">
+        <div class="dropdown">
+          <button
+            class="btn dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton2"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Flag icon
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+            <li><img src="./assest/images/auth-images/Flag.jpg" alt="Egypt Flag"></li>
+            <li><img src="./assest/images/auth-images/germany.png" alt="Germany Flag"></li>
+          </ul>
+        </div>
+        <input
+          class="w-100 border-0 rounded p-2"
+          type="text"
+          name="phoneNumber"
+          placeholder="Enter your number"
+        />
+      </div>
+      <div class="form-button">
+        <a
+          routerLinkActive="router-link-active"
+          class="btn btn-primary border w-100 d-flex align-items-center justify-content-center gap-2 mb-2"
+        >
+          Sign in</a
+        >
+      </div>
+    </div>
+
+    <!-- Sign in With Number/-->
+
+    <!-- Divider -->
+    <div class="d-flex align-items-center mb-2 w-100">
+      <hr class="flex-grow-1" />
+      <span class="px-2 text-muted">or</span>
+      <hr class="flex-grow-1" />
+    </div>
+    <!-- Google Sign-In -->
+    <button
+      type="button"
+      class="btn btn-light border w-100 d-flex align-items-center justify-content-center gap-2 mb-3"
+    >
+      <img src="https://www.svgrepo.com/show/355037/google.svg" alt="Google" width="20" />
+      Sign in with Google
+    </button>
+    <p class="text-muted text-center">
+      Don’t have an account?
+      <a routerLink="../sign-up" class="text-primary text-decoration-none">Sign up</a>
+    </p>
+  </form>
+</div>
