@@ -1,0 +1,82 @@
+
+.doctorlist{
+  font-family: "Montserrat", sans-serif;;
+}
+.filtration {
+  position: relative;
+}
+
+// shared input
+
+.doctorlistinput{
+  height: 54px;
+  border: 1px solid #bbc1c7;
+  color: #6D7379;
+    border-radius: 8px;
+    width: 100%;
+    background-color: white;
+}
+.doctorlistinput:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(109, 115, 121, 0.3);
+  border-color: #6D7379;
+}
+
+.filtration button {
+  cursor: pointer;
+  position: relative;
+}
+
+/* seprator*/
+.filtration button::after {
+  content: "";
+  position: absolute;
+  right: 35px;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background-color: #bbc1c7;
+}
+
+.filter-icon {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+}
+
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+.doctorlistcursoul button{
+  width:40px;
+  height:40px;
+  border-radius: 50%;
+  color:#05162C;
+  background-color: white ;
+  box-shadow: 0 0 12px 0 #86868629;
+}
+.doctorlistcursoul .card{
+  height: 40px;
+  border-radius: 14px;
+  padding: 8px 16px 8px 12px ;
+  font-family: "Montserrat", sans-serif;;
+
+
+
+}
+h3 ,h4{
+  font-family: "Noto Sans Georgian", sans-serif;
+}
+
+// doctor-container
+.doctor-container{
+  border-radius: 10px;
+  box-shadow: 0 0 12px 0 #000000;
+
+}
+
