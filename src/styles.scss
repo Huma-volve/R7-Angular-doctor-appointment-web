@@ -1,3 +1,5 @@
+
+
 :root {
   --main-color: #145db8;
   --secondary-color: #e8eff8;
@@ -23,3 +25,21 @@ body {
   color: var(--main-color);
   border: 1px solid var(--main-color);
 }
+
+a {
+  text-decoration: none;
+}
+p{
+  margin: 0;
+}
+
+.scale-0 {
+  transform: scale(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.scale-100 {
+  transform: scale(1);
+  transition: transform 0.3s ease-in-out;
+}
+

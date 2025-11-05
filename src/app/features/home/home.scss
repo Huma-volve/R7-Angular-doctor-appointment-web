@@ -36,13 +36,39 @@
 
 }
 
+.accordion-button::after {
+    
+    background-image: none !important;
 
-// /* 📱 موبايل (أقل من 768px) */
-// @media (max-width: 768px) {
+ 
+    content: "+";
+    font-weight: bold;
+    font-size: 1.3rem;
+    transform: none !important;
+}
 
-// }
+.accordion-button:not(.collapsed)::after {
+   
+    content: "−";
+}
 
-// /* 💻 تابلت (بين 769px و 1024px) */
+.accordion-button::after {
+    content: "+";
+    font-weight: bold;
+    font-size: 1.3rem;
+    transform: none !important;
+}
+
+
+
+button.accordion-button.fs-4.collapsed {
+    background-color: #F5F6F7;
+}
+
+.App_Dawnload_Banner{
+    top: 7rem;
+
+}
 @media (min-width: 768px) and (max-width: 1024px) {
     .arrowImage {
         position: absolute;

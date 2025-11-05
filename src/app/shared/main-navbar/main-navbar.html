@@ -1,26 +1,159 @@
 <nav style="background-color: white;" class="d-flex z-3 position-fixed top-0 w-100   justify-content-between px-5 py-3 align-items-center " >
     <!-- logo -->
-    <div  style=" position: relative;"  >
+    <div class=""  style=" position: relative;"  >
         <img src="../../../assets/images/Vector.png" alt="logo"> 
         <img  style="position: absolute; top: 6px; right: 1px; "  src="../../../assets/images/Vector2.png" alt="logo"> 
     </div>
  
 <!-- search -->
-<div  class="col-md-7 col-xl-4 d-flex justify-content-center position-relative align-items-center">
+<div  class="d-none search-for-largScreen col-lg-4 col-xl-4 d-lg-flex justify-content-center position-relative align-items-center">
     <img  width="24px" height="24px" class="position-absolute start-0 ms-3 end-50" src="../../../assets/images/search.png" alt="">
  <input  style=" background-color: #F5F6F7;  border-radius: 10px; " class="form-control py-2 px-5  no-outline" placeholder="Search about specialty, doctor" type="search">
  </div>
 
+
+<!-- Side Menu-->
+
+<div [ngClass]="{'CloseSideMenu':!StatusSidebar,'ShowSideMenu':StatusSidebar}"  class="  d-flex   flex-row  gap-4 justify-content-center align-items-center p-3">
+<button style="background-color: #F5F6F7;" class="form-control no-outline rounded-3 p-2">Booking</button>
+<button style="background-color: #F5F6F7;" class="form-control no-outline rounded-3 p-2">Home</button>
+</div>
+
+   <!-- Side Menu for mobile-->
+
+<!-- <div [ngClass]="{'SideMenuForMobile':!StatusSidebarForMobile,'SideMenuForMobile.show ':StatusSidebarForMobile}"  class="  bg-white d-flex d-md-none flex-column gap-4 justify-content-center align-items-center p-3">
+<button style="background-color: #F5F6F7;" class="form-control no-outline rounded-3 p-2">Booking</button>
+<button style="background-color: #F5F6F7;" class="form-control no-outline rounded-3 p-2">Home</button>
+</div>
+ -->
+
+
 <!-- profile-menu -->
  <div  class="d-flex   justify-content-center align-items-center gap-2 ">
-     <button style="background-color: #F5F6F7;" class="rounded-3 p-2  form-control no-outline">
+     <button (click)="fnOpenAndCloseStatusSidebar()" style="background-color: #F5F6F7;" class="rounded-3 d-block p-2  form-control no-outline">
         <img src="../../../assets/images/list.png" alt="">
      </button>
-     <button style="background-color: #F5F6F7;" class="rounded-3 p-2  form-control no-outline">
+
+     <!-- <button (click)="fnOpenAndCloseStatusSidebarForMobile()" style="background-color: #F5F6F7;" class="rounded-3  d-md-none p-2  form-control no-outline">
+        <img src="../../../assets/images/list.png" alt="">
+     </button> -->
+
+     <button (click)="fnOpenAndCloseNotification()" style="background-color: #F5F6F7;" class="rounded-3 p-2  form-control no-outline">
         <img src="../../../assets/images/Bell.png" alt="">
      </button>
     
-        <img style="cursor: pointer;" width="40px" height="40px" class="rounded-circle " src="../../../assets/images/profile.png" alt="">
+        <img (click)="fnOpenAndCloseStatusUserMenu()" style="cursor: pointer;" width="40px" height="40px" class="rounded-circle " src="../../../assets/images/profile.png" alt="">
    
  </div>
+
+
 </nav>
+
+<!-- search for mobile -->
+<div class="searchFormobile z-3 col-11 col-md-8 d-flex d-lg-none justify-content-center  align-items-center position-fixed  start-50 translate-middle">
+  <img width="24px" height="24px" class="position-absolute start-0 ms-3" src="../../../assets/images/search.png" alt="">
+  <input
+    style="background-color: #F5F6F7; border-radius: 10px;"
+    class="form-control py-2 shadow-sm px-5 no-outline"
+    placeholder="Search"
+    type="search"
+  >
+</div>
+
+
+
+
+<!-- notification -->
+ <div [ngClass]="{'closed-class':!StatusNotification , 'open-class':StatusNotification}" style=" height: 314px;" class="notification d-flex   bg-white shadow rounded-5 col-12 col-md-auto overflow-y-auto  justify-content-center flex-column align-items-center gap-3  p-2">
+    <div style="background-color: #F5F6F7;" class=" rounded-top-5 col-12 position-absolute top-0 d-flex justify-content-center align-items-center p-2">
+        <p>Your Notification</p>
+    </div>
+
+    <div class="d-flex flex-column justify-content-center align-items-center">
+    
+        <div class="d-flex justify-content-center align-items-center gap-1">
+            <img src="../../../assets/images/notification/Frame1.png" alt="" srcset="">
+            <div class="d-flex flex-column justify-content-center align-items-center ">
+                  <p>Upcoming Appointment</p>
+                  <p style="color:#6D7379 ;">Reminder: You have an appointment with...</p>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex flex-column justify-content-center align-items-center">
+    
+        <div class="d-flex justify-content-center align-items-center gap-1">
+            <img src="../../../assets/images/notification/frame2.png" alt="" srcset="">
+            <div class="d-flex flex-column justify-content-center align-items-center ">
+                  <p>Upcoming Appointment</p>
+                  <p style="color:#6D7379 ;">Reminder: You have an appointment with...</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex flex-column justify-content-center align-items-center">
+    
+        <div class="d-flex justify-content-center align-items-center gap-1">
+            <img src="../../../assets/images/notification/frame3.png" alt="" srcset="">
+            <div class="d-flex flex-column justify-content-center align-items-center ">
+                  <p>Upcoming Appointment</p>
+                  <p style="color:#6D7379 ;">Reminder: You have an appointment with...</p>
+            </div>
+        </div>
+    </div>
+
+ 
+ </div>
+
+
+
+
+
+ <!-- User Menu -->
+   <div [ngClass]="{'closed-class':!StatusUserMenu , 'open-class':StatusUserMenu}" style="background-color: #F5F6F7;" class="usermenu d-flex p-3   shadow rounded-5 col-12 col-md-auto overflow-y-auto  justify-content-center flex-column align-items-center gap-3  p-2">
+
+    <div class="d-flex justify-content-center align-items-center gap-2">
+        <img src="../../../assets/images/profile.png" alt="">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+             <p class="fw-bold">Seif Mohamed</p>
+             <p style="color: #6D7379;"><img src="../../../assets/images/userMenu/Location.png" alt="">129,El-Nasr Street, Cairo</p>
+        </div>
+   <a style="cursor: pointer;" href=""><img src="../../../assets/images/userMenu/setting.png" alt=""></a> 
+
+    </div>
+
+
+    <div class="d-flex justify-content-between my-hover col-12 p-3 rounded-5  align-items-center">
+      <img src="../../../assets/images/userMenu/Banknote 3.png" alt="">
+      <p>Payment Method</p>
+      <img  class="h-100 " src="../../../assets/images/userMenu/arrow.png" alt="">
+    </div>
+
+
+    <div class="d-flex justify-content-between my-hover col-12 p-3 rounded-5  align-items-center">
+      <img src="../../../assets/images/userMenu/heart.png" alt="">
+      <p>Favorite</p>
+      <img  class="h-100 " src="../../../assets/images/userMenu/arrow.png" alt="">
+    </div>
+
+       <div class="d-flex justify-content-between my-hover col-12 p-3 rounded-5  align-items-center">
+      <img src="../../../assets/images/userMenu/Settings2.png" alt="">
+      <p>Settings</p>
+      <img  class="h-100 " src="../../../assets/images/userMenu/arrow.png" alt="">
+    </div>
+
+
+       <div class="d-flex justify-content-between my-hover col-12 p-3 rounded-5  align-items-center">
+      <img src="../../../assets/images/userMenu/lock.png" alt="">
+      <p>Privacy Policy</p>
+      <img  class="h-100 " src="../../../assets/images/userMenu/arrow.png" alt="">
+    </div>
+
+
+       <div class="d-flex justify-content-between my-hover col-12 p-3 rounded-5  align-items-center">
+      <img src="../../../assets/images/userMenu/Logout 4.png" alt="">
+      <p style="color: #FC4B4E;">Log out</p>
+      <img  class="h-100 " src="../../../assets/images/userMenu/arrow.png" alt="">
+    </div>
+   </div>
+
+
