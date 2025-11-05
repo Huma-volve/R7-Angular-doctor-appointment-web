@@ -46,7 +46,4 @@ export class OtpValidationComponent implements OnInit {
   onSubmit(form : NgForm) {
     form.resetForm();
   }
-  onPaste(e : any){
-
-  }
 }
