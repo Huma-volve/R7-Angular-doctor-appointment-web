@@ -1,24 +1,32 @@
 import { CommonModule } from '@angular/common';
-import { Component, effect, signal } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, MinLengthValidator, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Component} from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 
-interface SignUpForm{
-  name: FormControl;
-  email: FormControl;
-}
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.html',
   standalone: true,
-  imports:[RouterLink, CommonModule, FormsModule, ReactiveFormsModule],
+  imports:[RouterLink, CommonModule, ReactiveFormsModule],
   styleUrl: './sign-up.scss',
 })
 export class SignUpComponent {
+
+  constructor(private router: Router){
+
+  }
+
   form = new FormGroup({
-   name: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(10)]),
-   email: new FormControl(null, [Validators.required, Validators.email]),
+    name: new FormControl('', [Validators.required,Validators.pattern(/^[a-z]{9,25}$/)]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    phone: new FormControl('', [Validators.required, Validators.pattern(/^[0-9]{10,15}$/),
+    ])
 })
+
+  onSignUp(){
+    this.router.navigate(['/auth/sign-in']);
+  }
+
 }
 
