@@ -1,22 +1,22 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './sign-in.html',
   styleUrl: './sign-in.scss',
 })
 export class SignInComponent {
-  email = '';
-  password = '';
+  constructor(private router: Router) {}
 
-  // constructor(private router: Router) {}
-
-  // onSubmit() {
-  //   console.log('Signing in with', this.email);
-  //   this.router.navigate(['/home']);
-  // }
+  form = new FormGroup({
+    phone: new FormControl('', [Validators.required, Validators.pattern(/^[0-9]{10,15}$/),
+    ])
+})
+  onSignIn() {
+    this.router.navigate(['/home']);
+  }
 }
