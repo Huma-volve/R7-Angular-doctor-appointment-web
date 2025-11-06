@@ -76,7 +76,44 @@ h3 ,h4{
 // doctor-container
 .doctor-container{
   border-radius: 10px;
-  box-shadow: 0 0 12px 0 #000000;
+  box-shadow: 0 0 12px 0 #0000001A ;
 
 }
+.data span{
+  white-space: nowrap;
+  color: #6D7379;
+  font-size: 14px;
+}
+.line{
+  width: 100%;
+  border: 1px solid #F5F6F7 ;
+}
+.price-col{
+  color:#05162C
 
+
+}
+.hourly{
+  font-size: 12px;
+  color: #6D7379;
+}
+.price-red{
+  color:#FC4B4E;
+}
+.book-appointment{
+  Height:48px;
+  border-radius: 10px;
+  color: white;
+  background-color:#145DB8;
+  outline: none;
+  border: none;
+    transition: all 0.4s ease; /* سلاسة في الحركة */
+
+}
+.book-appointment:hover{
+   background-color: #0f4ca0; /* لون أغمق شوية */
+  transform: translateY(-2px); /* يتحرك لفوق بسيط */
+  box-shadow: 0 4px 12px rgba(20, 93, 184, 0.2); /* ظل أقوى */
+  cursor: pointer;
+
+}
