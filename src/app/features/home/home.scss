@@ -1,0 +1,86 @@
+.introSection img:nth-child(1) {
+    width: 80%;
+
+}
+
+.introSection img:nth-child(2) {
+    width: 60%;
+}
+
+.introSection img:nth-child(3) {
+    width: 25%;
+}
+
+
+
+.rotate-90 {
+    // transform: rotate(90deg);
+    transform: rotate(31deg);
+}
+
+.rotate-336 {
+    transform: rotate(336deg);
+}
+
+.arrowImage {
+    position: absolute;
+    top: 90%;
+    right: 20%;
+
+}
+
+.locationImage {
+    position: absolute;
+    left: 5%;
+    top: 10%;
+
+}
+
+.accordion-button::after {
+    
+    background-image: none !important;
+
+ 
+    content: "+";
+    font-weight: bold;
+    font-size: 1.3rem;
+    transform: none !important;
+}
+
+.accordion-button:not(.collapsed)::after {
+   
+    content: "−";
+}
+
+.accordion-button::after {
+    content: "+";
+    font-weight: bold;
+    font-size: 1.3rem;
+    transform: none !important;
+}
+
+
+
+button.accordion-button.fs-4.collapsed {
+    background-color: #F5F6F7;
+}
+
+.App_Dawnload_Banner{
+    top: 7rem;
+
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+    .arrowImage {
+        position: absolute;
+        top: 80%;
+        right: 5%;
+
+    }
+
+    .locationImage {
+        position: absolute;
+        left: 5%;
+        top: 10%;
+
+    }
+}
