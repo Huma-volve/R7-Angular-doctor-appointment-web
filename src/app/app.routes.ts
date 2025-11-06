@@ -12,4 +12,15 @@ export const routes: Routes = [
     loadComponent: () => import('./features/home/home').then((c) => c.HomeComponent),
   },
 
+  {
+    path: 'profile',
+
+    loadComponent: () => import('./features/profile/profile').then((c) => c.Profile),
+  },
+
+  {
+    path: 'doctorlist',
+
+    loadComponent: () => import('./features/doctorlist/doctorlist').then((c) => c.Doctorlist),
+  }
 ];
