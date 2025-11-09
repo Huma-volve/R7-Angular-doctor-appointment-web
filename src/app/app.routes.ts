@@ -25,9 +25,13 @@ export const routes: Routes = [
     path: 'doctorlist',
 
     loadComponent: () => import('./features/doctorlist/doctorlist').then((c) => c.Doctorlist),
-  }
+  },
   {
     path: 'booking',
     loadComponent: () => import('./features/booking/booking').then((c) => c.Booking),
+  },
+  {
+    path: 'contactus',
+    loadComponent: () => import('./features/contact-us/contact-us').then((c) => c.ContactUs),
   },
 ];
