@@ -1,16 +1,23 @@
 import { Component,ElementRef,ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { MainNavbar } from '../../shared/main-navbar/main-navbar';
+import { MainFooter } from "../../shared/main-footer/main-footer";
+
 
 @Component({
   selector: 'app-doctorlist',
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule, MainNavbar, MainFooter,MainFooter],
   templateUrl: './doctorlist.html',
   styleUrl: './doctorlist.scss',
 })
 export class Doctorlist {
 
-  togglefiltermenu(){
+ // ///////////filterlisttoggle//////////////
+  filterlistshown:boolean=false
 
+  togglefiltermenu(){
+   this.filterlistshown=!this.filterlistshown
   }
 
 
@@ -32,5 +39,7 @@ export class Doctorlist {
     const el = this.cardsContainer.nativeElement;
     this.canScrollLeft = el.scrollLeft > 0;
   }
+
+
 
 }

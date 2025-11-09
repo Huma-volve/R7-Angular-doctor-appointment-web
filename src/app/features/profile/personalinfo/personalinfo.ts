@@ -1,0 +1,54 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { OnInit } from '@angular/core';
+import { AuthContainerComponent } from "../../../auth/components/auth-container/auth-container";
+@Component({
+  selector: 'app-personalinfo',
+  imports: [CommonModule, FormsModule, AuthContainerComponent],
+  templateUrl: './personalinfo.html',
+  styleUrl: './personalinfo.scss',
+})
+export class Personalinfo implements OnInit {
+
+
+  days=Array.from({length:31},(_,i)=>(i+1))
+ dayselected=''
+
+ months = [
+  { name: 'January', value: 1 },
+  { name: 'February', value: 2 },
+  { name: 'March', value: 3 },
+  { name: 'April', value: 4 },
+  { name: 'May', value: 5 },
+  { name: 'June', value: 6 },
+  { name: 'July', value: 7 },
+  { name: 'August', value: 8 },
+  { name: 'September', value: 9 },
+  { name: 'October', value: 10 },
+  { name: 'November', value: 11 },
+  { name: 'December', value: 12 }
+];
+  selectedmonth=''
+
+
+
+  selectedyear=''
+  years:number[]=[]
+  currentyear!:number;
+  startyear!:number;
+  ngOnInit(): void {
+
+   this.currentyear=new Date().getFullYear();
+   this.startyear=this.currentyear- 90;
+
+  for (let y = this.currentyear; y >= this.startyear; y--) {
+      this.years.push(y)
+
+  }
+
+  }
+
+
+
+}

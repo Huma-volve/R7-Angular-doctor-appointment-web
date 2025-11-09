@@ -1,6 +1,13 @@
-
 .doctorlist{
-  font-family: "Montserrat", sans-serif;;
+  --main-doc-font: "Noto Sans Georgian", sans-serif;
+  --second-font: "Montserrat", sans-serif;
+  --main-doc-color:#6D7379;
+  --main-color:#145DB8;
+  --secondary-doc-color:#05162C;
+}
+.doctorlist{
+  font-family: var(--second-font);
+  margin: top 25px;
 }
 .filtration {
   position: relative;
@@ -11,7 +18,7 @@
 .doctorlistinput{
   height: 54px;
   border: 1px solid #bbc1c7;
-  color: #6D7379;
+  color: var(--main-doc-color);
     border-radius: 8px;
     width: 100%;
     background-color: white;
@@ -19,7 +26,7 @@
 .doctorlistinput:focus {
   outline: none;
   box-shadow: 0 0 0 2px rgba(109, 115, 121, 0.3);
-  border-color: #6D7379;
+  border-color: var(--main-doc-color);
 }
 
 .filtration button {
@@ -64,19 +71,142 @@
   height: 40px;
   border-radius: 14px;
   padding: 8px 16px 8px 12px ;
-  font-family: "Montserrat", sans-serif;;
+  font-family: var(--second-font)
 
 
 
 }
 h3 ,h4{
-  font-family: "Noto Sans Georgian", sans-serif;
+  font-family: var(--main-doc-font)
 }
 
 // doctor-container
 .doctor-container{
   border-radius: 10px;
-  box-shadow: 0 0 12px 0 #000000;
+  box-shadow: 0 0 12px 0 #0000001A;
+  font-family: var(--second-font);
 
 }
 
+.doctor-container img{
+  width:97px;
+  border-radius: 10px;
+}
+.data{
+  white-space: nowrap;
+}
+.data h4{
+  font-family: var(--main-doc-font);
+  font-size: 1rem;
+}
+.data span{
+ color: var(--main-doc-color);
+ font-size: 12px;
+}
+.rating ,.time{
+  color: var(--secondary-doc-color);
+}
+
+.def{
+  color: var(--secondary-doc-color);
+  font-size: 14px;
+
+}
+.text-price{
+  color: #FC4B4E;
+  font-size: 14px;
+
+}
+.book-appointment{
+  width: 100%;
+  background-color: var(--main-color);
+  text-align: center;
+  color: white;
+  border-radius: 10px;
+  height: 48px;
+  border: 0;
+  outline: none;
+  transition: all 0.3s ease;
+
+}
+.book-appointment:hover{
+  transform: translatey(-3px);
+  background-color: #1252a0;
+  box-shadow: 0 4px 10px rgba(20, 93, 184, 0.35)
+}
+.p-hour{
+  font-size: 12px;
+  color: var(--main-doc-color);
+}
+
+//filterlist /////
+.filterlist label , .filterlist input{
+  color: var(--main-doc-color);
+  border-color: var(--main-doc-color);
+}
+.filterlist h4 ,.filterlist label{
+  font-size: 14px;
+
+  white-space: nowrap;
+  color: var(--secondary-doc-color);
+}
+input[type="checkbox"] ,.sort input[type="radio"]{
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  background-color: white;
+  border: 1px solid var(--main-doc-color);
+  border-radius:5px;
+  position: relative;
+  transition: all 0.2s ease ;
+
+}
+.option{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+
+  input{
+    margin-right: 15px;
+  }
+}
+input[type="checkbox"]:checked ,.sort input[type="radio"]:checked{
+  background-color: var(--main-color);
+  color: white;
+  border: var(--main-color);
+
+
+}
+input[type="checkbox"]:checked::after ,.sort input[type="radio"]:checked::after{
+  content:'✓';
+  position: absolute;
+  top: 1;
+  left: 5px;
+  color: white;
+}
+
+
+.gender .option input[type="radio"]{
+  appearance: none;
+  height: 0;
+  width: 0;
+  border-radius:0;
+ opacity: 0;
+
+}
+.gender .option label{
+  height: 36px;
+  border: 1px solid var(--main-doc-color);
+  padding: 8px;
+  color: var(--main-doc-color);
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+
+}
+.gender .option input[type="radio"]:checked +label
+{
+  background-color: var(--main-color);
+  color: white;
+  border-color: var(--main-color);
+}
