@@ -45,4 +45,8 @@ export const routes: Routes = [
     path: 'booking',
     loadComponent: () => import('./features/booking/booking').then((c) => c.Booking),
   },
+  {
+    path: 'contactus',
+    loadComponent: () => import('./features/contact-us/contact-us').then((c) => c.ContactUs),
+  },
 ];
