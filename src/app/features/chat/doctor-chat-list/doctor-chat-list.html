@@ -1,0 +1,31 @@
+<div class="chat-list">
+  <div class="d-flex align-items-center mb-2">
+    <h1 class="flex-grow-1 h3">Chat</h1>
+    <small>
+      <i class="fa-regular fa-chart-bar"></i>
+    </small>
+  </div>
+  <div class="search-for-chat mb-2">
+    <div class="d-flex align-items-center gap-1 border rounded py-2 px-3">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" class="form-control border-0" placeholder="Search for chat, doctor">
+    </div>
+  </div>
+  <div class="doctor-chat-list">
+    @for( chat of chatList; track chat.id){
+      <a [routerLink]="['/chat/doctor-chat', chat.id]">
+        <div class="chat-tap d-flex align-items-center gap-2 mb-2">
+      <img class="p-1"  src="{{chat.image}}" alt="">
+      <div class="docotr-info flex-grow-1">
+        <p>{{chat.name}}</p>
+        <span>{{chat.message}}</span>
+      </div>
+      <div class="time text-success">
+        <small class=" d-flex align-items-center">{{chat.time}}</small>
+        <small>{{chat.unreadCount}}</small>
+      </div>
+    </div>
+      </a>
+    }
+  </div>
+</div>

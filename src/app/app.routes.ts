@@ -46,8 +46,22 @@ export const routes: Routes = [
     loadComponent: () => import('./features/booking/booking').then((c) => c.Booking),
   },
   {path:"appointment", loadComponent:()=>import('./features/appointment/appointment').then((c)=>c.Appointment)}
-  {
+  ,{
     path: 'contactus',
     loadComponent: () => import('./features/contact-us/contact-us').then((c) => c.ContactUs),
+  },
+  {
+    path: 'reviews-rating',
+    loadComponent: () => import('./features/reviews-rating/reviews-rating').then((c) => c.ReviewsRating),
+  },
+  {
+    path: 'chat',
+    loadChildren: () =>
+      import('./features/chat/chat-routes').then((m) => m.CHAT_ROUTES),
+  },
+  {
+    path: 'payment',
+    loadChildren: () =>
+      import('./features/payment/payment.routes').then((m) => m.PAYMENT_ROUTES),
   },
 ];
