@@ -1,0 +1,24 @@
+.payment-card {
+  background-color: #f8f9fa;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 400px;
+  margin: 1rem auto;
+}
+.add-btn {
+  background-color: #0056d2;
+  border: none;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 0.5rem;
+  color: white;
+  padding: 0.75rem;
+  font-weight: 500;
+}
+.add-btn:hover {
+  background-color: #0040a8;
+}
