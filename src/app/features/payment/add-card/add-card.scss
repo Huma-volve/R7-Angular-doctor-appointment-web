@@ -1,0 +1,26 @@
+.card-preview {
+  background: linear-gradient(135deg, #00b4db, #0083b0);
+  border-radius: 1rem;
+  color: white;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 380px;
+  margin: 1rem auto;
+}
+.card-number {
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  margin: 1rem 0;
+}
+.save-btn {
+  background-color: #0056d2;
+  border: none;
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  color: white;
+  font-weight: 500;
+}
+.save-btn:hover {
+  background-color: #0040a8;
+}

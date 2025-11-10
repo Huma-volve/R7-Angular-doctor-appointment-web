@@ -7,7 +7,16 @@ export const routes: Routes = [
     path: 'auth',
     loadChildren: () =>
       import('./auth/auth-routes').then((m) => m.AUTH_ROUTES),
-    
+  },
+  {
+    path: 'chat',
+    loadChildren: () =>
+      import('./features/chat/chat-routes').then((m) => m.CHAT_ROUTES),
+  },
+  {
+    path: 'payment',
+    loadChildren: () =>
+      import('./features/payment/payment.routes').then((m) => m.PAYMENT_ROUTES),
   },
   {
     path: 'home',
@@ -25,9 +34,13 @@ export const routes: Routes = [
     path: 'doctorlist',
 
     loadComponent: () => import('./features/doctorlist/doctorlist').then((c) => c.Doctorlist),
-  }
+  },
   {
     path: 'booking',
     loadComponent: () => import('./features/booking/booking').then((c) => c.Booking),
+  },
+  {
+    path: 'reviews-rating',
+    loadComponent: () => import('./features/reviews-rating/reviews-rating').then((c) => c.ReviewsRating),
   },
 ];

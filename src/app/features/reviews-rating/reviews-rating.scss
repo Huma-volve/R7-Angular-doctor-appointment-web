@@ -1,0 +1,9 @@
+section{
+  p {
+    span {
+      &:nth-child(2):hover {
+        color: rgb(38, 72, 136) !important;
+      }
+    }
+  }
+}
