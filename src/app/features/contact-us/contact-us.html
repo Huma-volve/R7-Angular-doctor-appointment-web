@@ -1,0 +1,68 @@
+<app-main-navbar></app-main-navbar>
+
+<section style="min-height: calc(100vh - 90px); padding-top: 90px;"  class="  mt-5 px-2 d-flex flex-column flex-md-row justify-content-center gap-4 justify-content-md-around align-items-center ">
+<!-- Contact_Us -->
+    <div class="d-flex p-1 flex-column gap-2 justify-content-center align-items-center align-items-md-start">
+<h2> Contact Us</h2>
+<p style="color: #6D7379;" class="fw-bold fs-5 text-center">
+    We are committed to processing the<br> information in order to contact you<br> and talk about your questions 
+</p>
+<!-- phone number -->
+<div class="d-flex col-12 justify-content-start align-items-center gap-1 p-1">
+    <img src="../../../assets/images/images-ContactUS/phone.png" alt=""> 
+    <p>080 707 555-321</p>
+</div>
+
+<!-- email -->
+<div class="d-flex col-12 justify-content-start align-items-center gap-1 p-1">
+    <img src="../../../assets/images/images-ContactUS/email.png" alt=""> 
+    <p>demo@example.com</p>
+</div>
+<!-- location -->
+<div class="d-flex col-12 justify-content-start align-items-center gap-1 p-1">
+    <img src="../../../assets/images/images-ContactUS/location.png" alt=""> 
+    <p>526 Melrose Street, Water Mill, 11976<br>New York</p>
+</div>
+    </div>
+
+
+
+
+    <!-- form -->
+<form [formGroup]="contactForm" (ngSubmit)="sendData()" class="col-12  col-md-4 p-1 col-lg-3 col-xxl-3 flex-column d-flex justify-content-center align-items-center gap-2" action="">
+<!-- name -->
+ <div class="col-12">
+    <input formControlName="name" type="name" class="form-control"  id="exampleFormControlInput1" placeholder="name">
+
+        <p *ngIf="contactForm.get('name')?.errors?.['minlength'] && contactForm.get('name')?.invalid  " class="text-danger p-1 small">{{'Name must be at least 3 characters'}}</p>
+    <p *ngIf=" !contactForm.get('name')?.errors?.['minlength'] && contactForm.get('name')?.errors?.['required'] && contactForm.get('name')?.touched " class="text-danger p-1 small">{{'Name required'}}</p>
+
+    <p *ngIf="!contactForm.get('name')?.errors?.['minlength'] && contactForm.get('name')?.errors?.['pattern'] && contactForm.get('name')?.dirty " class="text-danger p-1 small">{{' Name must contain letters only'}}</p>
+
+
+ </div>
+
+<!-- email -->
+ <div class="col-12">
+  <input formControlName="email"  type="email" class="form-control "  id="exampleFormControlInput1" placeholder="Email">
+     <p *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" class="text-danger small p-1">
+      {{'Please enter a valid email'}}
+    </p>
+ </div>
+  
+<!-- message -->
+<div class="col-12">
+    <textarea formControlName="message" class=" border rounded p-2 form-control no-outline" rows="8" placeholder="message" id="exampleFormControlTextarea1" ></textarea>
+     <p *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched" class="text-danger small p-1">{{'Message must be at least 10 characters'}}</p>
+
+</div>
+
+
+
+  <button [disabled]="contactForm.invalid" [ngClass]="{'btn-sumbit':contactForm.valid,'btn-sumbit-invalid btn btn-secondary':contactForm.invalid}" class=" col-12 py-2" type="submit">sumbit</button>
+</form>
+
+
+</section>
+
+<app-main-footer></app-main-footer>
