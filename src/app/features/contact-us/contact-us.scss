@@ -1,0 +1,16 @@
+.btn-sumbit {
+    background-color: var(--main-color);
+    color: white;
+    border: 1px solid var(--main-color);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+.btn-sumbit-invalid {
+   
+    color: white;
+    border: 1px solid ;
+    border-radius: 10px;
+    cursor: default;
+    transition: all 0.5s;
+}
