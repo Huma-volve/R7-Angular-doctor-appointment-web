@@ -1,4 +1,7 @@
 import { Routes } from '@angular/router';
+import { profile } from 'console';
+import { features } from 'process';
+import { Personalinfo } from './features/profile/personalinfo/personalinfo';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
@@ -7,7 +10,7 @@ export const routes: Routes = [
     path: 'auth',
     loadChildren: () =>
       import('./auth/auth-routes').then((m) => m.AUTH_ROUTES),
-    
+
   },
   {
     path: 'home',
@@ -19,13 +22,25 @@ export const routes: Routes = [
     path: 'profile',
 
     loadComponent: () => import('./features/profile/profile').then((c) => c.Profile),
+    children:[
+      {path:"personal-info",
+      loadComponent:()=>import('./features/profile/personalinfo/personalinfo').then(c =>c.Personalinfo)
+    },{
+      path:'password',
+      loadComponent:()=>import('./features/profile/managepassword/managepassword').then(c => c.Managepassword)
+    },
+    { path:"",
+      redirectTo:'personal-info', pathMatch:'full'
+    }
+
+    ]
   },
 
   {
     path: 'doctorlist',
 
     loadComponent: () => import('./features/doctorlist/doctorlist').then((c) => c.Doctorlist),
-  }
+  },
   {
     path: 'booking',
     loadComponent: () => import('./features/booking/booking').then((c) => c.Booking),
