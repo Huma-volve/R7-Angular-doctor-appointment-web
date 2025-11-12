@@ -1,3 +1,4 @@
+import { GetNotificationByUser } from './../../core/services/get-notification-by-user';
 import { routes } from './../../app.routes';
 import { Component } from '@angular/core';
 import { SharedModule } from '../shared-module';
@@ -13,7 +14,16 @@ import { Router, RouterLink, RouterOutlet, Routes } from '@angular/router';
 })
 export class MainNavbar {
 
-constructor(private routes: Router) {}
+constructor(private routes: Router , private _GetNotificationByUser: GetNotificationByUser) {}
+
+ 
+
+ngOnInit() {
+  this._GetNotificationByUser.getNotificationByUser().subscribe((res:any)=>{
+    
+  })
+}
+
 
   StatusNotification: boolean = false;
   StatusUserMenu: boolean = false;
@@ -41,6 +51,8 @@ this.StatusSidebarForMobile = !this.StatusSidebarForMobile;
 this.StatusUserMenu = false
 this.StatusNotification = false
   }
+
+
 
 
 

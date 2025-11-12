@@ -120,7 +120,7 @@
 
 <!-- doctorSwiber -->
 
-<swiper-container class="d-flex mt-5 p-2 py-md-4 px-md-5" loop="true"
+<swiper-container  class="d-flex mt-5 p-2 py-md-4 px-md-5" loop="true"
   autoplay-delay="1000" 
    speed="800"
    breakpoints='{
@@ -132,21 +132,23 @@
   
   >
    
-<swiper-slide *ngFor="let i of [1,2,3,4,5,6,7,8,9]">
+
+  @for(doctors of arrTopRatedDoctors ; track $index) {
+<swiper-slide>
 <div class="parent border border-white shadow rounded-4 p-md-3 col-12   col-xl-10 d-flex gap-2  flex-column ">
     <div class="d-flex justify-content-evenly align-items-center  gap-3">
-      <img style="width: 7rem; "  src="../../../assets/images/doctorSwiper/doctor-1.png" alt="">  
+      <img   style="max-width: 7rem;"  class="rounded-4" [src]="doctors.imgUrl" alt="">  
  
  <!-- name doctor and hospital -->
   <div class="d-flex flex-column justify-content-start">
-    <p class="fw-semibold">Robert Johnson</p>
-    <p style="color: #6D7379;">Orthopedic | El-Nasr Hospital</p>
+    <p class="fw-semibold">{{doctors.fullName}}</p>
+    <p style="color: #6D7379;">{{doctors.address}}</p>
 
     <!-- time and stars -->
     <div class="d-flex justify-content-center  align-items-center gap-3">
         <div class="d-flex  justify-content-center align-items-center gap-1 ">
           <img class="w-100 h-100"  src="../../../assets/images/doctorSwiper/stars.png" alt="">
-       <span>4.8</span>  
+       <span>{{doctors.rating}}</span>  
         </div>
 
         <div class="d-flex justify-content-center  align-items-center gap-1 ">
@@ -167,17 +169,19 @@
  <div class="d-flex justify-content-between align-items-center px-1">
 <p class="m-0"> Price<span style="color: #6D7379;">/hour</span></p>
 
-<span style="color: #FC4B4E;">$350</span>
+<span style="color: #FC4B4E;">${{doctors.price}}</span>
  </div>
 
 <button class="btn-main mt-1 col-12">Book appointment</button>
 
 </div>
+</swiper-slide> 
+}
 
 
-</swiper-slide>
 
-  
+
+
 
 </swiper-container>
 
