@@ -8,3 +8,24 @@
   height: 100%;
   background-color: rgba(0,0,0,0.3);
 }
+dialog{
+  min-width: 350px;
+}
+.stars {
+  display: inline-flex;
+  cursor: pointer;
+  font-size: 2rem;
+  color: #ccc;
+}
+
+.fas {
+  color: gold;
+}
+
+.far {
+  color: #ccc;
+}
+.invalid{
+  background-color:rgba(160, 160, 237, 0.838) ;
+}
+
