@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { SharedModule } from '../shared-module';
 import { CommonModule, NgClass } from '@angular/common';
 import { Router, RouterLink, RouterOutlet, Routes } from '@angular/router';
+import { AuthService } from '../../auth/components/auth.service';
 
 @Component({
   selector: 'app-main-navbar',
@@ -13,7 +14,7 @@ import { Router, RouterLink, RouterOutlet, Routes } from '@angular/router';
 })
 export class MainNavbar {
 
-constructor(private routes: Router) {}
+constructor(private routes: Router, private authService: AuthService) {}
 
   StatusNotification: boolean = false;
   StatusUserMenu: boolean = false;
@@ -43,7 +44,10 @@ this.StatusNotification = false
   }
 
 
-
-
+// User Logging out
+logout(){
+  this.authService.logout()
+  this.routes.navigate(['/auth/sign-in']);
+}
 
 }

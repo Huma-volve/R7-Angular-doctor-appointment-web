@@ -2,6 +2,8 @@ import { Routes } from '@angular/router';
 import { profile } from 'console';
 import { features } from 'process';
 import { Personalinfo } from './features/profile/personalinfo/personalinfo';
+import { AuthGuard } from './core/guards/auth-guard';
+
 
 export const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
@@ -14,8 +16,7 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-
-    loadComponent: () => import('./features/home/home').then((c) => c.HomeComponent),
+    loadComponent: () => import('./features/home/home').then((c) => c.HomeComponent), canActivate:[AuthGuard],
   },
 
   {
@@ -32,7 +33,6 @@ export const routes: Routes = [
     { path:"",
       redirectTo:'personal-info', pathMatch:'full'
     }
-
     ]
   },
 
