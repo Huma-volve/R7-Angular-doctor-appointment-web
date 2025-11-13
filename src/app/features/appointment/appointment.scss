@@ -1,0 +1,61 @@
+.card-content{
+
+    opacity: 1;
+    border-radius: 19px;
+    padding: 16px;
+    gap: 24px;
+    border-width: 1px;
+    border: 1px solid #BBC1C7;
+
+}
+.appointment{
+  font-family: var(--second-font);
+}
+.block
+{
+
+justify-content: space-between;
+border-radius: 8px;
+padding-top: 8px;
+padding-bottom: 8px;
+ background: #F5F6F7;
+ width: 50px;
+ height: 60px;
+ cursor: pointer;
+
+}
+.block:focus ,.hour:focus ,.active{
+  background-color: #145DB8 !important;
+  color: white !important;
+}
+.hour{
+border-radius: 10px;
+padding: 8px;
+gap: 8px;
+background: var(--Background-Neutral-Lightest, #F5F6F7);
+ cursor: pointer;
+
+}
+.summary {
+  p{
+    color: #05162C;
+  }
+  i{
+    color: #145DB8;
+  }
+}
+.bookbtn{
+
+height: 48;
+
+border-radius: 8px;
+border-width: 1px;
+padding: 8px;
+color: #145DB8;
+background-color: white;
+// On click
+// Open overlay: "Payment";
+// Animate: Move in Right;
+border: 1px solid  #145DB8 !important;
+}
+
