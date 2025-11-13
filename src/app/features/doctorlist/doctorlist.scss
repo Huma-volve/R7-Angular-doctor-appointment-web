@@ -90,10 +90,13 @@ h3 ,h4{
 
 .doctor-container img{
   width:97px;
+  height: 88px;
+  object-fit: cover;
   border-radius: 10px;
 }
 .data{
   white-space: nowrap;
+  overflow-x: hidden;
 }
 .data h4{
   font-family: var(--main-doc-font);
