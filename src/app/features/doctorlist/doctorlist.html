@@ -7,7 +7,7 @@
       <div class="col-md-2 col-sm-3">
         <div class="filtration">
           <button
-            class="text-capitalize doctorlistinput d-flex align-items-center justify-content-between"
+            class="text-capitalize  doctorlistinput d-flex align-items-center justify-content-between "
             (click)="togglefiltermenu()"
           >
             <span class="filter-icon ps-3 text-center">
@@ -102,7 +102,8 @@
 
 
 
-    <div [class.col-lg-2]='!filterlistshown' [class.d-none]="filterlistshown">
+    <div *ngIf="filterlistshown" 
+      class="col-lg-2 col-md-3   border-end">
               <div class="filterlist mt-3" >
               <div class="filter-content">
                 <div class="Available d-flex align-items-start justify-content-around gap-2 flex-column ">
@@ -179,7 +180,11 @@
 
     </div>
 
-    <div [class.col-lg-auto]="filterlistshown" [class.col-lg-10]="!filterlistshown" [class.col-md-10]="!filterlistshown">
+    <div [class.col-lg-10]="filterlistshown"
+      [class.col-md-9]="filterlistshown"
+      [class.col-lg-12]="!filterlistshown"
+      [class.col-md-12]="!filterlistshown"
+  >
 
       <div>
         <div class="doctorlistcursoul mt-3">
@@ -201,8 +206,8 @@
           class="d-flex overflow-hidden flex-nowrap scroll-smooth w-100 gap-2"
           (scroll)="onScroll()"
         >
-          <div class="card flex-shrink-0 text-center" *ngFor="let item of items">
-            {{ item }}
+          <div class="card flex-shrink-0 text-center" *ngFor="let card of specialistcontainer">
+          {{card.emoji}} {{card.title}}
           </div>
         </div>
 
@@ -218,34 +223,38 @@
 
 
      <div class="doctors my-4">
-          <div class="doctor-content row">
-            <div class="col-lg-4 col-md-6">
-              <div
-                class="doctor-container p-3 ps-2 d-flex align-items-center justify-content-center flex-column"
-              >
-                <div class="d-flex align-items-center justify-content-start w-100">
-                  <div class="">
-                    <img src="../../../assets/images/doctorlist/doc1.jpg" alt="doctor image" />
-                  </div>
-                  <div class="data ms-1">
-                    <h4>Robert Johnson</h4>
-                    <span>Orthopedic | El-Nasr Hospital</span>
-                    <div class="d-flex align-items-center justify-content-between">
-                      <span class="rating"><i class="fa-solid fa-star text-warning"></i> 4.8</span>
-                      <span class="time"><i class="fa-solid fa-clock"></i> 9:30am - 8:00pm</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="price my-1 w-100 d-flex align-items-center justify-content-between">
-                  <span class="p-hour"><span class="def">Price/</span>hour</span>
-                  <span class="text-price">350$</span>
-                </div>
-                <div class="mt=3 w-100 d=flex align-items-center justify-content-center">
-                  <button class="book-appointment w-100">
-                    <a href="/book" class="text-decoration-none text-white d-block">Book appointment</a>
-                  </button>
-                </div>
+          <div class="doctor-content row d-flex align-items-center justify-content-lg-between justify-content-md-between g-3">
+            <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let doc of doctorcontainer">
+              
+                <div 
+                class="doctor-container  p-3 ps-2 d-flex align-items-center justify-content-center flex-column"
+                >
+                      <div class="d-flex align-items-center justify-content-start w-100">
+                        <div class="">
+                          <img [src]="doc.imgUrl" alt="doctor image" />
+                        </div>
+                        <div class="data ms-1">
+                          <h4>{{doc.fullName}}</h4>
+                          <span>{{doc.specialistTitle}} | {{doc.address}}</span>
+                          <div class="d-flex align-items-center justify-content-between">
+                            <span class="rating"><i class="fa-solid fa-star text-warning"></i> {{doc.rating}}</span>
+                            <span class="time" *ngIf="doc.startDate"><i class="fa-solid fa-clock"></i>{{doc.startDate}}-{{doc.endDate}}</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="price my-1 w-100 d-flex align-items-center justify-content-between">
+                        <span class="p-hour"><span class="def">Price/</span>hour</span>
+                        <span class="text-price">{{doc.price }}$</span>
+                      </div>
+                      <div class="mt-2 w-100 d-flex align-items-center justify-content-center">
+                        <button class="book-appointment w-100">
+                          <a routerLink="appointment" class="text-decoration-none text-white d-block">Book appointment</a>
+                        </button>
+                      </div>
               </div>
+
+              
+              
             </div>
           </div>
           </div>
