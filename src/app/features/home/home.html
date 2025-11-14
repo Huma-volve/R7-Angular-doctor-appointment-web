@@ -49,7 +49,7 @@
 
           <div  class="d-flex flex-column flex-md-row rounded-5  p-3 justify-content-center gap-2 gap-md-5 align-items-center ">
             <button style="background-color: #145DB8;" type="button" class=" col-12 col-md-auto btn btn-primary text-white  px-xl-5  py-xl-2 ">Get started</button>
-            <button  type="button" class="btn btn-outline-primary     px-xl-5 col-12 col-md-auto py-xl-2 d-flex align-items-center justify-content-center gap-1 "><img class="w-auto" src="/images/intro_secton/book.png" alt=""> Book Appointment</button>
+            <button [routerLink]="['/doctorlist']"  type="button" class="btn btn-outline-primary     px-xl-5 col-12 col-md-auto py-xl-2 d-flex align-items-center justify-content-center gap-1 "><img class="w-auto" src="/images/intro_secton/book.png" alt=""> Book Appointment</button>
 
           </div>
 
@@ -84,7 +84,7 @@
 <div class="p-4 col-12 col-lg-6 col-xl-4 ">
 <h2 class="fs-3 fs-md-1">Find Care Near You in Seconds</h2>
 <p style="color: #6D7379;" class="fw-bold fs-5">Allow location access or choose your city to instantly discover trusted doctors and clinics around you—quick, easy, and local.</p>
-<button type="button" class="btn btn-outline-primary p-2 d-flex gap-1 justify-content-center align-items-center "><img src="../../../assets/images/sectionMap/search.png" alt="">Search by location</button>
+<button (click)="Search_By_Location()" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-outline-primary mt-2 p-2 d-flex gap-1 justify-content-center align-items-center "><img src="../../../assets/images/sectionMap/search.png" alt="">Search by location</button>
 </div>
 
 <div class="p-4 col-12 col-md-6  col-xl-4    ">
@@ -95,6 +95,44 @@
   </section>
 
 
+
+<!-- Modal -->
+<div  class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+<div class="modal-body">
+       @for (location of arrSearchByLocation(); track $index) {
+      
+    <div style="cursor: pointer;" class="d-flex backgroundHover rounded-4 justify-content-evenly align-items-center gap-1 p-1 col-12 ">
+       <img width="80rem" class="bg-secondary rounded-circle" [src]="location.imgUrl" alt="">
+
+       <div class="d-flex flex-column justify-content-center align-items-center p-1">
+
+         <p class="fw-bold">{{location.fullName}}</p>
+        <p >{{location.address}}</p>
+        <p style="color: #6D7379;">{{location.about | cutPragraph}}...</p>
+
+       </div>
+      
+    </div>
+       }
+            @if (!arrSearchByLocation().length) {
+              <div class="d-flex p-3 justify-content-center flex-column align-items-center gap-4">
+                <i class="fa-solid fa-location-crosshairs fa-xl" style="color: #8b9098;"></i>
+                  <p style="color: #6D7379;" class="fs-5">No nearby results found</p>
+              </div>
+                
+           }
+  </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
@@ -133,11 +171,11 @@
   >
    
 
-  @for(doctors of arrTopRatedDoctors ; track $index) {
+  @for(doctors of arrTopRatedDoctors() ; track $index) {
 <swiper-slide>
 <div class="parent border border-white shadow rounded-4 p-md-3 col-12   col-xl-10 d-flex gap-2  flex-column ">
     <div class="d-flex justify-content-evenly align-items-center  gap-3">
-      <img   style="max-width: 7rem;"  class="rounded-4" [src]="doctors.imgUrl" alt="">  
+      <img   style=" height: 120px;"  class="rounded-4" [src]="doctors.imgUrl" alt="">  
  
  <!-- name doctor and hospital -->
   <div class="d-flex flex-column justify-content-start">
@@ -242,7 +280,7 @@
       aria-labelledby="heading1"
     >
       <div class="accordion-body">
-        empty
+       This app is used to help patients easily find and book appointments with doctors based on specialty, location, and availability. It allows users to search for nearby doctors, view their profiles, and schedule appointments quickly and conveniently.
       </div>
     </div>
   </div>
@@ -270,7 +308,8 @@
       aria-labelledby="heading2"
     >
       <div class="accordion-body">
-        empty
+Is the app free to use?
+Yes, the app is free to use. Patients can search for doctors, view profiles, and book appointments without any cost.
       </div>
     </div>
   </div>
@@ -297,7 +336,8 @@
       aria-labelledby="heading3"
     >
       <div class="accordion-body">
-        empty
+       How can I find a doctor?
+You can find a doctor by using the search feature in the app. You can search by name, specialty, or location. You can also use the “Search by Location” button to automatically find nearby doctors based on your current position.
       </div>
     </div>
   </div>
@@ -324,7 +364,8 @@
       aria-labelledby="heading4"
     >
       <div class="accordion-body">
-        empty
+        Can I cancel my appointment?
+Yes, you can cancel your appointment at any time. Simply go to your bookings page, select the appointment you want to cancel, and follow the cancellation steps.
       </div>
     </div>
   </div>
@@ -351,7 +392,8 @@
       aria-labelledby="heading5"
     >
       <div class="accordion-body">
-        empty
+    What payment methods are supported?
+The app supports multiple payment methods, including cash, credit/debit cards, and online payment options depending on the doctor or clinic’s setup.
       </div>
     </div>
   </div>
@@ -378,7 +420,8 @@
       aria-labelledby="heading6"
     >
       <div class="accordion-body">
-        empty
+      How do I contact customer support?
+You can contact customer support through the “Contact Us” section in the app. You can send a message directly, or use the provided email and phone number for assistance.
       </div>
     </div>
   </div>

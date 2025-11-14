@@ -108,7 +108,7 @@
    <div [ngClass]="{'closed-class':!StatusUserMenu , 'open-class':StatusUserMenu}" style="background-color: #F5F6F7;" class="usermenu d-flex p-3   shadow rounded-5 col-12 col-md-auto overflow-y-auto  justify-content-center flex-column align-items-center gap-3  p-2">
 
     <div class="d-flex justify-content-center align-items-center gap-2">
-        <img src="../../../assets/images/profile.png" alt="">
+        <img [routerLink]="['/profile']" style="cursor: pointer;" src="../../../assets/images/profile.png" alt="">
         <div class="d-flex flex-column justify-content-center align-items-center">
              <p class="fw-bold">Seif Mohamed</p>
              <p style="color: #6D7379;"><img src="../../../assets/images/userMenu/Location.png" alt="">129,El-Nasr Street, Cairo</p>
@@ -118,7 +118,7 @@
     </div>
 
 
-    <div class="d-flex justify-content-between my-hover col-12 p-3 rounded-5  align-items-center">
+    <div [routerLink]="['/payment']" class="d-flex justify-content-between my-hover col-12 p-3 rounded-5  align-items-center">
       <img src="../../../assets/images/userMenu/Banknote 3.png" alt="">
       <p>Payment Method</p>
       <img  class="h-100 " src="../../../assets/images/userMenu/arrow.png" alt="">

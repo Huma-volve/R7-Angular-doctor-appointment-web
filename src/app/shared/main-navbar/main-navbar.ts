@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { SharedModule } from '../shared-module';
 import { CommonModule, NgClass } from '@angular/common';
 import { Router, RouterLink, RouterOutlet, Routes } from '@angular/router';
+import { SearchByLocation } from '../../core/services/search-by-location';
 
 @Component({
   selector: 'app-main-navbar',
@@ -14,9 +15,8 @@ import { Router, RouterLink, RouterOutlet, Routes } from '@angular/router';
 })
 export class MainNavbar {
 
-constructor(private routes: Router , private _GetNotificationByUser: GetNotificationByUser) {}
+constructor(private routes: Router , private _GetNotificationByUser: GetNotificationByUser,private _search_By_location:SearchByLocation) {}
 
- 
 
 ngOnInit() {
   this._GetNotificationByUser.getNotificationByUser().subscribe((res:any)=>{
