@@ -6,11 +6,11 @@
     </div>
  
 <!-- search -->
-<div  class="d-none search-for-largScreen col-lg-3 col-xl-4 d-lg-flex justify-content-center position-relative align-items-center">
+<div   class="d-none search-for-largScreen col-lg-3 col-xl-4 d-xl-flex justify-content-center position-relative align-items-center">
     <img  width="24px" height="24px" class="position-absolute start-0 ms-3 end-50" src="../../../assets/images/search.png" alt="">
- <input  style=" background-color: #F5F6F7;  border-radius: 10px; " class="form-control py-2 px-5  no-outline" placeholder="Search about specialty, doctor" type="search">
+ <input [(ngModel)]="valueInputSearch"  style=" background-color: #F5F6F7;  border-radius: 10px; " class="form-control py-2 px-5  no-outline" placeholder="Search about specialty, doctor" type="search">
  </div>
-
+ 
 
 <!-- Side Menu-->
 
@@ -46,12 +46,12 @@
 </nav>
 
 <!-- search for mobile -->
-<div class="searchFormobile z-3 col-11 col-md-8 d-flex d-lg-none justify-content-center  align-items-center position-fixed  start-50 translate-middle">
+<div class="searchFormobile z-3 col-11 col-md-8 d-flex d-xl-none justify-content-center  align-items-center position-fixed  start-50 translate-middle">
   <img width="24px" height="24px" class="position-absolute start-0 ms-3" src="../../../assets/images/search.png" alt="">
-  <input
+  <input [(ngModel)]="valueInputSearch"
     style="background-color: #F5F6F7; border-radius: 10px;"
     class="form-control py-2 shadow-sm px-5 no-outline"
-    placeholder="Search"
+    placeholder="specialty, doctor"
     type="search"
   >
 </div>
@@ -105,7 +105,7 @@
 
 
  <!-- User Menu -->
-   <div [ngClass]="{'closed-class':!StatusUserMenu , 'open-class':StatusUserMenu}" style="background-color: #F5F6F7;" class="usermenu d-flex p-3   shadow rounded-5 col-12 col-md-auto overflow-y-auto  justify-content-center flex-column align-items-center gap-3  p-2">
+   <div [ngClass]="{'closed-class':!StatusUserMenu , 'open-class':StatusUserMenu}" style="background-color: #F5F6F7;" class="usermenu d-flex p-3   shadow rounded-5 col-12 col-md-auto overflow-y-auto  justify-content-center flex-column align-items-center gap-3 z-3 p-2">
 
     <div class="d-flex justify-content-center align-items-center gap-2">
         <img [routerLink]="['/profile']" style="cursor: pointer;" src="../../../assets/images/profile.png" alt="">
@@ -170,3 +170,25 @@
     <img (click)="  fnOpenAndCloseStatusSidebarForMobile()" class="w-100" src="../../../assets/images/close.png" alt="">
   </a> 
 </div>
+
+
+
+<!-- div search Doctors -->
+ <div [ngClass]="{'OpensearchAllDoctors':valueInputSearch!== '','ClosesearchAllDoctors':valueInputSearch== ''}" class="h-50 overflow-y-auto col-12 col-md-9 col-lg-auto d-flex flex-column align-items-start rounded-3 shadow bg-white">
+
+        @for (doctor of arrSearchAllDorctors | searchAllDoctors:valueInputSearch; track $index) {
+      
+    <div style="cursor: pointer;" class="d-flex backgroundHover col-12 rounded-4 justify-content-evenly align-items-center gap-1 p-1 col-12 ">
+       <img width="80rem" class="bg-secondary rounded-circle" [src]="doctor.imgUrl || 'https://cure-doctor-booking.runasp.net/images/users/doctor1.jpg'" alt="">
+
+       <div class="d-flex flex-column justify-content-center align-items-center p-1">
+
+         <p class="fw-bold">{{doctor.fullName}}</p>
+        <p >{{doctor.specialistTitle}}</p>
+        <p style="color: #6D7379;">{{doctor.about || 'Senior cardiologist with over 20 years in heart surgery and diagnostics.'}}</p>
+
+       </div>
+      
+    </div>
+       }
+ </div>

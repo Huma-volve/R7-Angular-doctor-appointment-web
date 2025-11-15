@@ -7,9 +7,12 @@ export interface ITopRatedDoctors {
             specialistTitle: string,
             address: string,
             rating: number,
-            distance: null,
+            distance: any,
             isFavourite: boolean,
             price: number,
-            startDate: null,
-            endDate: null
+            startDate: any,
+            endDate: any,
+            latitude:any,
+            longitude:any,
+
 }

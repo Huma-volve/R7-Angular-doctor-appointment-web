@@ -48,15 +48,16 @@
 
 
 .closed-class {
-    transform: scale(0);
-    opacity: 0;
-    transition: all 0.3s ease-in-out;
+    transform: scale(0) !important;
+    // opacity: 0;
+    transition: all 0.3s ease-in-out !important;
 }
 
 .open-class {
-    transform: scale(1);
-    opacity: 1;
-    transition: all 0.3s ease-in-out;
+    transform: scale(1) !important;
+    // opacity: 1;
+    transition: all 0.3s ease-in-out !important;
+   
 }
 .my-hover:hover {
     background-color: #b2b7bd;
@@ -77,4 +78,36 @@
 
 .slide-down.active {
     top: 0;
+}
+
+
+.OpensearchAllDoctors{
+    position: fixed;
+    left: 47%;
+    top: 7%;
+    transform: translateX(-50%) scale(1) !important;
+    transition: all 0.3s ease-in-out !important;
+    z-index: 3;
+}
+.ClosesearchAllDoctors{
+    position: fixed;
+    left: 47%;
+    top: 7%;
+    transform: translateX(-50%) scale(0) !important;
+    transition: all 0.3s ease-in-out !important;
+        z-index: 3;
+}
+
+
+@media (max-width: 767px){
+    .OpensearchAllDoctors {
+    top: 13%;
+
+    }
+}
+@media (max-width: 1023px){
+    .OpensearchAllDoctors {
+    top: 13%;
+
+    }
 }
