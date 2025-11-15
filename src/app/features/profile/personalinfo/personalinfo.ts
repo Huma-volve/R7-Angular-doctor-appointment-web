@@ -5,7 +5,7 @@ import { OnInit } from '@angular/core';
 import { AuthContainerComponent } from "../../../auth/components/auth-container/auth-container";
 @Component({
   selector: 'app-personalinfo',
-  imports: [CommonModule, FormsModule, AuthContainerComponent],
+  imports: [CommonModule, FormsModule, ],
   templateUrl: './personalinfo.html',
   styleUrl: './personalinfo.scss',
 })

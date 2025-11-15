@@ -62,6 +62,15 @@ body {
   border: 1px solid var(--main-color);
 }
 
+
+.backgroundHover:hover {
+  background-color: var(--secondary-color);
+  cursor: pointer;
+
+  transition: background-color 0.3s ease;
+
+}
+
 a {
   text-decoration: none;
 }
