@@ -1,5 +1,5 @@
 export interface ITopRatedDoctors {
-            id: 3,
+            id: number,
             fullName: string,
             about: string,
             imgUrl: string,

@@ -30,9 +30,9 @@ constructor(private routes: Router , private _GetNotificationByUser: GetNotifica
 valueInputSearch :string = ''
 
 ngOnInit() {
-  this._GetNotificationByUser.getNotificationByUser().subscribe((res:any)=>{
+  // this._GetNotificationByUser.getNotificationByUser().subscribe((res:any)=>{
     
-  })
+  // })
 
   this.searchAllDoctors()
 }
@@ -70,7 +70,6 @@ searchAllDoctors():void{
 
 this._searchAllDoctors.searchAllDorators().subscribe({
   next: (res:any)=>{
-    console.log(res.data)
     this.arrSearchAllDorctors = res.data
   }
 })

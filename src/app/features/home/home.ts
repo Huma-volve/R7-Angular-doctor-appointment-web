@@ -28,6 +28,8 @@ export class HomeComponent  {
 
  ngOnInit(): void {
    this.TopRatedDoctors()
+   this.Search_By_Location()
+  
 }
 
 
@@ -37,8 +39,6 @@ export class HomeComponent  {
   this._TopRatedDoctors.getTopRatedDoctors().subscribe({
 
     next: (data: any) => {
-      console.log(data.data)
-
       this.arrTopRatedDoctors.set(data.data) 
     },
 
@@ -53,24 +53,24 @@ export class HomeComponent  {
 // search by location
 arrSearchByLocation = signal<ITopRatedDoctors[]>([]) ;
 
-statusDivSearchByLocation:boolean = false;
+
 Search_By_Location():void{
   const radiusKm :number = 15;
     navigator.geolocation.getCurrentPosition((position:any)=>{
       this._search_By_location.fnsearch_By_location(position.coords.latitude,position.coords.longitude,radiusKm).subscribe({
 
-        next: (res:any) => {
-          this.statusDivSearchByLocation = true;
-         console.log(res.data)
-        this.arrSearchByLocation.set(res.data) 
-        },
+        next: (res:any) =>  {
+          this.arrSearchByLocation.set(res.data)
+        }  ,
+      
+        
 
         error:(err:any)=>{
           console.log(err)
         },
 
 
-          complete: () => {
+  complete: () => {
     console.log('Done');
   }
        
