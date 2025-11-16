@@ -178,7 +178,7 @@
 
         @for (doctor of arrSearchAllDorctors | searchAllDoctors:valueInputSearch; track $index) {
       
-    <div style="cursor: pointer;" class="d-flex backgroundHover col-12 rounded-4 justify-content-evenly align-items-center gap-1 p-1 col-12 ">
+    <div [routerLink]="['/appointment',doctor.id]" style="cursor: pointer;" class="d-flex backgroundHover col-12 rounded-4 justify-content-evenly align-items-center gap-1 p-1 col-12 ">
        <img width="80rem" class="bg-secondary rounded-circle" [src]="doctor.imgUrl || 'https://cure-doctor-booking.runasp.net/images/users/doctor1.jpg'" alt="">
 
        <div class="d-flex flex-column justify-content-center align-items-center p-1">

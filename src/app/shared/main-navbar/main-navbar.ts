@@ -14,7 +14,7 @@ import { SearchAllDoctorsPipe } from '../../core/pipe/search-all-doctors-pipe';
 
 @Component({
   selector: 'app-main-navbar',
-  imports: [CommonModule, RouterLink, CutPragraphPipe,SearchAllDoctorsPipe,FormsModule,RouterLink],
+  imports: [CommonModule, RouterLink, CutPragraphPipe,SearchAllDoctorsPipe,FormsModule,],
   templateUrl: './main-navbar.html',
   styleUrl: './main-navbar.scss',
   standalone: true,
