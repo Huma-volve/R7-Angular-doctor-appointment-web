@@ -101,12 +101,12 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button #closeBtn  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 <div class="modal-body">
        @for (location of arrSearchByLocation(); track $index) {
       
-    <div [routerLink]="['/appointment',location.id]" style="cursor: pointer;" class="d-flex backgroundHover rounded-4 justify-content-evenly align-items-center gap-1 p-1 col-12 ">
+    <div (click)="fnCloseModal()" [routerLink]="['/appointment',location.id]" style="cursor: pointer;" class="d-flex backgroundHover rounded-4 justify-content-evenly align-items-center gap-1 p-1 col-12 ">
        <img width="80rem" class="bg-secondary rounded-circle" [src]="location.imgUrl" alt="">
 
        <div class="d-flex flex-column justify-content-center align-items-center p-1">

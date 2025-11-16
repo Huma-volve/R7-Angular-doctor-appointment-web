@@ -1,6 +1,6 @@
 import { SearchByLocation } from './../../core/services/search-by-location';
 import { TopRatedDoctors } from './../../core/services/top-rated-doctors';
-import { AfterViewInit, ChangeDetectorRef, Component, CUSTOM_ELEMENTS_SCHEMA, NgZone, OnInit, signal } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, NgZone, OnInit, signal, ViewChild } from '@angular/core';
 import { SharedModule } from '../../shared/shared-module';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
@@ -81,6 +81,15 @@ Search_By_Location():void{
 
 }
 
+
+// close modal
+
+@ViewChild('closeBtn') closeBtn!: ElementRef;
+
+
+fnCloseModal():void{
+  console.log(this.closeBtn.nativeElement.click())
+}
 
 }
 
