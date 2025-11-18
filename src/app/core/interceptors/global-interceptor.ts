@@ -16,7 +16,7 @@ export const globalInterceptor: HttpInterceptorFn = (req, next) => {
   }
 
   spinner.show();
- 
+
   const myReq = req.clone({
     url: environment.baseUrl + req.url,
     setHeaders: {
@@ -27,11 +27,11 @@ export const globalInterceptor: HttpInterceptorFn = (req, next) => {
   return next(myReq).pipe(
 
     catchError((err)=>{
-  
+
       return throwError(()=> err)
-    } ),  
+    } ),
 
     finalize(() => spinner.hide() )
-  
+
   );
 };

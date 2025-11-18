@@ -9,9 +9,7 @@
   </span>
   </p>
   @if(addreviewbtnclicked()){
-    <div>
-      <app-add-review (cancel)="onCancel()" (addReview)="onAddReview()"/>
-    </div>
+    <app-add-review (closeDialog)="Dialog()"></app-add-review>
   }
   <hr>
   <app-reviews/>

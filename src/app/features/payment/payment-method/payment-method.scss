@@ -1,11 +1,44 @@
-button{
-  background-color: rgb(222, 217, 222);
+.section-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #6c757d;
+  margin-bottom: 10px;
 }
-.mobile-wallets{
-  label{
-    cursor: pointer;
+
+.method-card {
+  background: #f5f6f8;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+
+  &:hover {
+    background: #ececef;
   }
-  button,label{
-    background-color: rgb(222, 217, 222);
+}
+
+.method-icon {
+  width: 38px;
+  height: auto;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ced4da;
+  border-radius: 50%;
+  transition: 0.2s ease-in-out;
+
+  &.active {
+    border-color: #0d6efd;
+    background: #0d6efd;
   }
+}
+.invalid{
+  background-color:rgba(160, 160, 237, 0.838) ;
+}
+
+.selected {
+  background: #e7f1ff !important;
 }

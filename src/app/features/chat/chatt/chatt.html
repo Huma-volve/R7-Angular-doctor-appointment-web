@@ -1,0 +1,37 @@
+
+<div class="chat-wrapper">
+  <!-- Chat List -->
+  <div class="chat-list" [class.hidden-on-mobile]="isMobileView && showChat">
+    <app-list
+      (receiverId)="getReceiverId($event)"
+      (selectedUser)="onSelectUser($event)">
+    </app-list>
+  </div>
+
+  <!-- Chat Window -->
+  <div class="chat-window" [class.fullscreen]="isMobileView && showChat" *ngIf="!isMobileView || showChat">
+
+    <!-- Mobile Back Button -->
+    <div class="chat-header" *ngIf="isMobileView">
+      <button class="back-btn" (click)="goBack()">
+        <i class="fa-solid fa-arrow-left"></i>
+      </button>
+      <img [src]="selectedUser.img || './assets/images/user2.png'" alt="User">
+      <span>{{selectedUser.name}}</span>
+    </div>
+
+    <!-- Messages -->
+    <ng-container *ngIf="receiverId; else noChatSelected">
+      <app-messages [receiverId]="receiverId" [selectedUser]="selectedUser"></app-messages>
+    </ng-container>
+
+    <ng-template #noChatSelected>
+      <div class="d-flex justify-content-center align-items-center flex-column gap-2 h-100">
+        <p>Start your chat</p>
+        <p>Stay in touch with your doctor for easier follow-up</p>
+      </div>
+    </ng-template>
+  </div>
+</div>
+
+<app-main-footer/>
