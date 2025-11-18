@@ -14,6 +14,7 @@ import { SearchAllDoctorsPipe } from '../../core/pipe/search-all-doctors-pipe';
 import { INotificationItem, INotificationsResponse } from '../../core/interfaces/Inotification';
 import { ReadNotification } from '../../core/services/read-notification';
 import { A11yModule } from "@angular/cdk/a11y";
+import { AuthService } from '../../auth/components/auth.service';
 
 @Component({
   selector: 'app-main-navbar',
@@ -27,7 +28,7 @@ export class MainNavbar {
 constructor(private routes: Router , private _GetNotificationByUser: GetNotificationByUser,private _searchAllDoctors: SearchAllDorctors,private _ReadNotification:ReadNotification) {}
 
 //  arrSearchAllDorctors = signal<ITopRatedDoctors[]>([])
- arrSearchAllDorctors !:ITopRatedDoctors[] 
+ arrSearchAllDorctors !:ITopRatedDoctors[]
  arrNotification = signal <INotificationItem[]> ([])
 
 //  showDivSearch:boolean = false;
@@ -95,6 +96,10 @@ this._searchAllDoctors.searchAllDorators().subscribe({
 
 
 
+logout(){
+  localStorage.removeItem('userToken'); //Remove Token
+  this.routes.navigate(['/auth/sign-in']) //Go to sign in page
+}
 
 
 

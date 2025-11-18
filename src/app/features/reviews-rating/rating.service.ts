@@ -39,15 +39,7 @@ export class RatingService{
   }
 
   GetReviewsByDoctor(){
-        const userToken = localStorage.getItem('userToken')? localStorage.getItem('userToken') : '';
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${userToken}`,
-      'Content-Type': 'application/json',
-    });
-
-    return this.httpClient.post(`api/Customer/Reviews/GetReviewsByDoctor`,{
-      headers
-    })
+    return this.httpClient.get(`api/Customer/Reviews/GetReviewsByDoctor`)
   }
 
   UpdateReview(){
@@ -57,21 +49,12 @@ export class RatingService{
       'Content-Type': 'application/json',
     });
 
-    return this.httpClient.post(`api/Customer/Reviews/UpdateReview`,{
-      headers
-    })
+    return this.httpClient.put(`api/Customer/Reviews/UpdateReview`,{headers})
   }
 
   DeleteReview(){
-    const userToken = localStorage.getItem('userToken')? localStorage.getItem('userToken') : '';
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${userToken}`,
-      'Content-Type': 'application/json',
-    });
 
-    return this.httpClient.post(`api/Customer/Reviews/DeleteReview`,{
-      headers
-    })
+    return this.httpClient.delete(`api/Customer/Reviews/DeleteReview`)
   }
 
 }

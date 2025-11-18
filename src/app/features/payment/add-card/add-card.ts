@@ -48,17 +48,6 @@ export class AddCard implements OnInit{
       this.expiryMonth = '';
     }
   }
-  validateYear() {
-    if (!this.expiryYear) return;
-
-    // Only allow numbers
-    this.expiryYear = this.expiryYear.replace(/[^0-9]/g, '');
-
-    const month = Number(this.expiryYear);
-    if (month < 10000 || month > 1999) {
-      this.expiryYear = '';
-    }
-  }
 
   onSubmit(form: NgForm) {
     if (form.valid) {
