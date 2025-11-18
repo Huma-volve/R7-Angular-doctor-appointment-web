@@ -55,14 +55,8 @@ export const routes: Routes = [
     path: 'reviews-rating',
     loadComponent: () => import('./features/reviews-rating/reviews-rating').then((c) => c.ReviewsRating),
   },
-  {
-    path: 'payment',
-    loadChildren: () =>
-      import('./features/payment/payment.routes').then((m) => m.PAYMENT_ROUTES),
-  },
     {
-    path: 'hope',
-    canActivate: [AuthGuard],
+    path: 'chat',
     loadComponent: () =>
       import('./features/chat/chatt/chatt').then((c) => c.Chatt),
   },
@@ -72,7 +66,6 @@ export const routes: Routes = [
   // --------------------------
   {
     path: 'payment',
-    canActivate: [AuthGuard],
     loadChildren: () =>
       import('./features/payment/payment.routes').then(
         (m) => m.PAYMENT_ROUTES
