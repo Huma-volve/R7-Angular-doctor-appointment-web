@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { SharedModule } from '../shared-module';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-main-footer',
-  imports: [],
+  imports: [SharedModule,RouterLink],
   templateUrl: './main-footer.html',
   styleUrl: './main-footer.scss',
   standalone: true,
