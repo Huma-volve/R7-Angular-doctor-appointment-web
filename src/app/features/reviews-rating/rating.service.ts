@@ -17,7 +17,7 @@ export class RatingService{
   }
 
   getReviews(){
-    return this.httpClient.get(`${environment.baseUrl}api/Customer/Reviews/GetReviews`)
+    return this.httpClient.get(`api/Customer/Reviews/GetReviews`)
     }
 
   addReview(comment: string | any, rating: number){
@@ -30,7 +30,7 @@ export class RatingService{
       createAt: today
   })
 
-    return this.httpClient.post(`${environment.baseUrl}api/Customer/Reviews/AddReview`,{
+    return this.httpClient.post(`api/Customer/Reviews/AddReview`,{
       doctorId: 1,
       rating,
       comment,
@@ -45,7 +45,7 @@ export class RatingService{
       'Content-Type': 'application/json',
     });
 
-    return this.httpClient.post(`${environment.baseUrl}api/Customer/Reviews/GetReviewsByDoctor`,{
+    return this.httpClient.post(`api/Customer/Reviews/GetReviewsByDoctor`,{
       headers
     })
   }
@@ -57,7 +57,7 @@ export class RatingService{
       'Content-Type': 'application/json',
     });
 
-    return this.httpClient.post(`${environment.baseUrl}api/Customer/Reviews/UpdateReview`,{
+    return this.httpClient.post(`api/Customer/Reviews/UpdateReview`,{
       headers
     })
   }
@@ -69,7 +69,7 @@ export class RatingService{
       'Content-Type': 'application/json',
     });
 
-    return this.httpClient.post(`${environment.baseUrl}api/Customer/Reviews/DeleteReview`,{
+    return this.httpClient.post(`api/Customer/Reviews/DeleteReview`,{
       headers
     })
   }
