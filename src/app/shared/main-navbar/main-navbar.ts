@@ -11,32 +11,48 @@ import { single } from 'rxjs';
 import { CutPragraphPipe } from "../../core/pipe/cut-pragraph-pipe";
 import { FormsModule, NgModel } from '@angular/forms';
 import { SearchAllDoctorsPipe } from '../../core/pipe/search-all-doctors-pipe';
+import { INotificationItem, INotificationsResponse } from '../../core/interfaces/Inotification';
+import { ReadNotification } from '../../core/services/read-notification';
+import { A11yModule } from "@angular/cdk/a11y";
 
 @Component({
   selector: 'app-main-navbar',
-  imports: [CommonModule, RouterLink, CutPragraphPipe,SearchAllDoctorsPipe,FormsModule,],
+  imports: [CommonModule, RouterLink, SearchAllDoctorsPipe, FormsModule, CutPragraphPipe, A11yModule],
   templateUrl: './main-navbar.html',
   styleUrl: './main-navbar.scss',
   standalone: true,
 })
 export class MainNavbar {
 
-constructor(private routes: Router , private _GetNotificationByUser: GetNotificationByUser,private _searchAllDoctors: SearchAllDorctors) {}
+constructor(private routes: Router , private _GetNotificationByUser: GetNotificationByUser,private _searchAllDoctors: SearchAllDorctors,private _ReadNotification:ReadNotification) {}
 
 //  arrSearchAllDorctors = signal<ITopRatedDoctors[]>([])
  arrSearchAllDorctors !:ITopRatedDoctors[] 
+ arrNotification = signal <INotificationItem[]> ([])
 
 //  showDivSearch:boolean = false;
 valueInputSearch :string = ''
 
 ngOnInit() {
-  // this._GetNotificationByUser.getNotificationByUser().subscribe((res:any)=>{
-    
-  // })
 
   this.searchAllDoctors()
+  this.getAllnotification()
 }
 
+
+getAllnotification():void{
+    this._GetNotificationByUser.getNotificationByUser().subscribe((res:INotificationsResponse)=>{
+    this.arrNotification.set(res.data.reverse())
+  })
+
+}
+
+
+ReadNotification(notification:INotificationItem):void{
+this._ReadNotification.RescheduleBooking(notification.id).subscribe({
+  next:(()=> this.getAllnotification())
+})
+}
 
   StatusNotification: boolean = false;
   StatusUserMenu: boolean = false;
@@ -51,6 +67,7 @@ ngOnInit() {
   fnOpenAndCloseStatusUserMenu():void {
     this.StatusUserMenu = !this.StatusUserMenu;
  this.StatusNotification = false
+
   }
 
 
@@ -70,6 +87,7 @@ searchAllDoctors():void{
 
 this._searchAllDoctors.searchAllDorators().subscribe({
   next: (res:any)=>{
+    console.log(res.data)
     this.arrSearchAllDorctors = res.data
   }
 })

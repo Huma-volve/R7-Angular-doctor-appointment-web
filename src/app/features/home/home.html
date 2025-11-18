@@ -1,6 +1,6 @@
 <app-main-navbar></app-main-navbar>
 <!-- section intro -->
-<section style="height: 100vh;" class="introSection position-relative mt-5 ">
+<section style="height: 100vh; " class="introSection position-relative mt-5 ">
 
 <img class="position-absolute  start-50 top-50 translate-middle"  src="../../../assets/images/intro_secton/Ellipse-1.png" alt="">
 <img class="position-absolute  start-50 top-50   translate-middle  " src="../../../assets/images/intro_secton/Ellipse-2.png" alt="">
@@ -48,7 +48,7 @@
 
 
           <div  class="d-flex flex-column flex-md-row rounded-5  p-3 justify-content-center gap-2 gap-md-5 align-items-center ">
-            <button style="background-color: #145DB8;" type="button" class=" col-12 col-md-auto btn btn-primary text-white  px-xl-5  py-xl-2 ">Get started</button>
+            <button [routerLink]="['/doctorlist']" style="background-color: #145DB8;" type="button" class=" col-12 col-md-auto btn btn-primary text-white  px-xl-5  py-xl-2 ">Get started</button>
             <button [routerLink]="['/doctorlist']"  type="button" class="btn btn-outline-primary     px-xl-5 col-12 col-md-auto py-xl-2 d-flex align-items-center justify-content-center gap-1 "><img class="w-auto" src="/images/intro_secton/book.png" alt=""> Book Appointment</button>
 
           </div>
@@ -62,7 +62,7 @@
 
 
 <!-- section How It work -->
- <section class="d-flex flex-column flex-md-row p-1 position-relative z-1 justify-content-center gap-3 align-items-center ">
+ <section id="howItWork" class="d-flex flex-column flex-md-row p-1 position-relative z-1 justify-content-center gap-3 align-items-center ">
 <!-- box1 -->
   <div class="p-3 col-12 col-md-4 col-xxl-auto  ">
 <img class="w-100"  src="../../../assets/images/How_it_work_section/Frame1.png" alt="">
@@ -107,13 +107,14 @@
        @for (location of arrSearchByLocation(); track $index) {
       
     <div (click)="fnCloseModal()" [routerLink]="['/appointment',location.id]" style="cursor: pointer;" class="d-flex backgroundHover rounded-4 justify-content-evenly align-items-center gap-1 p-1 col-12 ">
-       <img width="80rem" class="bg-secondary rounded-circle" [src]="location.imgUrl" alt="">
+       <img width="80rem" class="bg-secondary rounded-circle" [src]="location.imgUrl || 'https://cure-doctor-booking.runasp.net/images/users/doctor2.jpg'" alt="">
 
        <div class="d-flex flex-column justify-content-center align-items-center p-1">
 
          <p class="fw-bold">{{location.fullName}}</p>
-        <p >{{location.address}}</p>
-        <p style="color: #6D7379;">{{location.about | cutPragraph}}...</p>
+         <p >{{location.specialistTitle}}</p>
+        
+        <p style="color: #6D7379;">{{location.about ||'Skin and laser specialist with expertise in cosmetic dermatology.' | cutPragraph }}...</p>
 
        </div>
       

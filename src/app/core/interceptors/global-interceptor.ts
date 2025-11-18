@@ -1,4 +1,3 @@
-import { Toastr } from './../services/toastr';
 
 import { HttpInterceptorFn } from '@angular/common/http';
 import { catchError, finalize, of, tap, throwError } from 'rxjs';
@@ -11,7 +10,6 @@ import { error } from 'console';
 export const globalInterceptor: HttpInterceptorFn = (req, next) => {
   const id = inject(PLATFORM_ID);
   const spinner = inject(NgxSpinnerService);
-  const toastr = inject(Toastr)
   let userToken = '';
   if (isPlatformBrowser(id)) {
     userToken = localStorage.getItem('userToken') || '' ;
@@ -22,14 +20,14 @@ export const globalInterceptor: HttpInterceptorFn = (req, next) => {
   const myReq = req.clone({
     url: environment.baseUrl + req.url,
     setHeaders: {
-      Authorization: userToken ?`Bearer ${userToken}` : '',
+      Authorization: userToken ?`Bearer ${userToken}` : '', 'Content-Type': 'application/json',
     },
   });
 
   return next(myReq).pipe(
 
     catchError((err)=>{
-       toastr.subject.next('Please check your internet connection')
+  
       return throwError(()=> err)
     } ),  
 

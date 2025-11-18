@@ -2,7 +2,6 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NgxSpinnerComponent } from 'ngx-spinner';
 import { SharedModule } from './shared/shared-module';
-import { Toastr } from './core/services/toastr';
 
 @Component({
   selector: 'app-root',
@@ -14,20 +13,11 @@ import { Toastr } from './core/services/toastr';
 export class App {
   protected readonly title = signal('doctor-app');
 
-  constructor(private _toast:Toastr){}
-  massegeAlert : string = ''
+  constructor(){}
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
-
-
-   this._toast.getalert().subscribe((alert:string) => {
-    this.massegeAlert = alert;
-    setTimeout(() => {
-      this.massegeAlert = ''
-    },4000)
-  })
 
 
   }
