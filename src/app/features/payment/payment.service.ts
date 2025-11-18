@@ -30,41 +30,18 @@ setWalletMethod(wallet: string){
 }
 //GET api/Profile/PaymentMethods/getall
 gellAtPaymentMethods(){
-    const userToken = localStorage.getItem('userToken')? localStorage.getItem('userToken') : '';
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${userToken}`,
-      'Content-Type': 'application/json',
-    });
-
-    return this.httpClient.get(`api/Profile/PaymentMethods/getall`,{
-      headers
-    })
+    return this.httpClient.get(`api/Profile/PaymentMethods/getall`)
 }
 //POST api/Profile/PaymentMethods/add
 addPaymentMethod(paymentMethod: PaymentInterface){
-    const userToken = localStorage.getItem('userToken')? localStorage.getItem('userToken') : '';
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${userToken}`,
-      'Content-Type': 'application/json',
-    });
-
     return this.httpClient.post(`api/Profile/PaymentMethods/add`,
       paymentMethod
-    ,{
-      headers
-    })
+    )
 }
 //Delete api/Profile/PaymentMethods/delete/{id}
 deletePaymentMethods(id: number){
-    const userToken = localStorage.getItem('userToken')? localStorage.getItem('userToken') : '';
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${userToken}`,
-      'Content-Type': 'application/json',
-    });
 
-    return this.httpClient.delete(`api/Profile/PaymentMethods/delete/${id}`,{
-      headers
-    })
+    return this.httpClient.delete(`api/Profile/PaymentMethods/delete/${id}`)
 }
 //POST api/Profile/PaymentMethods/init
 // {
@@ -72,20 +49,12 @@ deletePaymentMethods(id: number){
 //   "amount": 0.1
 // }
 initPaymentMethods(amount: string){
-    const userToken = localStorage.getItem('userToken')? localStorage.getItem('userToken') : '';
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${userToken}`,
-      'Content-Type': 'application/json',
-    });
-
     return this.httpClient.post(`api/Profile/PaymentMethods/init`,
       {
         "Amount": +amount,
         "Method": `${this._selectedWalletMethod()}`
       }
-      ,{
-      headers
-    })
+      )
 }
 //POST api/Profile/PaymentMethods/confirm
 // {
@@ -95,22 +64,12 @@ initPaymentMethods(amount: string){
 //   "status": "string"
 // } Still Working on It...
 confirmPaymentMethods(transactionId: string, amount: number, status: string){
-    const userToken = localStorage.getItem('userToken')? localStorage.getItem('userToken') : '';
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${userToken}`,
-      'Content-Type': 'application/json',
-    });
-
     return this.httpClient.post(`api/Profile/PaymentMethods/confirm`,{
       TransactionId: transactionId,
       PaymentMethod: this._selectedWalletMethod(),
       amount,
       status
-    },{
-      headers
     })
 }
-
-
 
 }

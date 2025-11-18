@@ -5,18 +5,21 @@ import { Injectable } from "@angular/core";
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AuthGuard implements CanActivate{
 
   constructor(private auth: AuthService, private router: Router) {}
 
-  private userToken = localStorage.getItem('userToken');
-  canActivate(): boolean {
-    if (this.auth.isLoggedIn()) {
-      return true;
-    } else {
-      this.router.navigate(['/auth/sign-in']);
-      return false;
-    }
-    return true;
-  }
+  // private userToken = localStorage.getItem('userToken');
+  // canActivate(): boolean {
+  //   return true;
+  // }
+
+  canActivate():boolean{
+  if(localStorage.getItem('userToken') != null) {
+      return true
+  }else {
+  this.router.navigate(['/auth/sign-in'])
+  return false
+}
+}
 }
