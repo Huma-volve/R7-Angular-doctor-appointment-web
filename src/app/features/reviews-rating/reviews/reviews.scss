@@ -1,26 +1,36 @@
-    .review-card {
+.reviews-slider {
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
 
-      border-radius: 12px;
-      padding: 1rem;
-      max-width: 420px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-    .review-card img {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-    .rating-badge {
-      background-color: #ffce31;
-      color: #000;
-      font-weight: 600;
-      font-size: 0.9rem;
-      border-radius: 6px;
-      padding: 0.25rem 0.5rem;
-    }
-    @media (max-width: 576px) {
-      .review-card {
-        padding: 0.75rem;
-      }
-    }
+  .review-card {
+    width: 320px;
+    scroll-snap-align: start;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,.08);
+  }
+}
+
+.rating-badge {
+  background-color: #4e73df;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+}
+
+.stars {
+  display: inline-flex;
+  cursor: pointer;
+  font-size: 2rem;
+  color: #ccc;
+}
+
+.fas {
+  color: gold;
+}
+
+.far {
+  color: #ccc;
+}

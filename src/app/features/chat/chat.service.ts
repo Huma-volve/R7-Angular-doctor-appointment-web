@@ -1,44 +1,34 @@
-import { Injectable } from "@angular/core";
-import { Chat } from "./chat.interface";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { inject, Injectable, PLATFORM_ID } from "@angular/core";
+import { environment } from "../../core/environment/environment";
+import { isPlatformBrowser } from "@angular/common";
+
 @Injectable({
-  providedIn: 'root',
+  providedIn:'root'
 })
+
 export class ChatService{
-  private chats: Chat[] = [
-  {
-    id: 1,
-    name: "Dr. Robert Lewis",
-    message: "It's been around six.....",
-    time: "5:30 PM",
-    unreadCount: 3,
-    image: "assets/images/user1.png",
-  },
-  {
-    id: 2,
-    name: "Dr. Jana",
-    message: "you: ok I will do it like...",
-    time: "1:25 PM",
-    unreadCount: 0,
-    image: "assets/images/user3.png",
-  },
-  {
-    id: 3,
-    name: "Dr. Jessica Turner",
-    message: "It's been around six.....",
-    time: "Yesterday",
-    unreadCount: 0,
-    image: "assets/images/user1.png",
-  },
-  {
-    id: 4,
-    name: "Dr. Jessica",
-    message: "It's been around six.....",
-    time: "2 days",
-    unreadCount: 0,
-    image: "assets/images/user2.png",
-  },
-];
-  getChats(): Chat[] {
-    return this.chats;
+  private httpClient = inject(HttpClient);
+
+  searchDoctors(text: string){
+    return this.httpClient.get(`${environment.baseUrl}api/chat/chat/chats?search=${text}`);
+  }
+
+//GET api/Profile/PaymentMethods/getall
+getAllChat(){
+
+    return this.httpClient.get(`${environment.baseUrl}api/chat/Chat/chats`)
+}
+
+  startChat(receiverId: string){
+
+    return this.httpClient.post(`${environment.baseUrl}api/chat/chat/startChat?receiverId=${receiverId}`, { receiverId });
+  }
+  sendMessage(chatId: number, content: string, receiverId: string | any) {
+    const formData = new FormData();
+    formData.append('chatId', chatId.toString());
+    formData.append('ReceiverId', receiverId);
+    formData.append('Content', content);
+    return this.httpClient.post(`${environment.baseUrl}api/chat/chat/send`, formData);
   }
 }

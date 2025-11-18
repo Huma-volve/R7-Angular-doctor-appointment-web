@@ -3,6 +3,8 @@ import { CommonModule, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MainNavbar } from '../../shared/main-navbar/main-navbar';
 import { MainFooter } from "../../shared/main-footer/main-footer";
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -13,6 +15,7 @@ import { MainFooter } from "../../shared/main-footer/main-footer";
 })
 export class Doctorlist {
 
+  constructor(private rtr: Router){}
  // ///////////filterlisttoggle//////////////
   filterlistshown:boolean=false
 
@@ -40,6 +43,8 @@ export class Doctorlist {
     this.canScrollLeft = el.scrollLeft > 0;
   }
 
-
+  goToAddMethod(){
+      this.rtr.navigate(['/payment/payment-method'])
+  }
 
 }

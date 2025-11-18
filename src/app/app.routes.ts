@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { profile } from 'console';
 import { features } from 'process';
 import { Personalinfo } from './features/profile/personalinfo/personalinfo';
+import { AuthGuard } from './core/guards/auth-guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
@@ -55,13 +56,29 @@ export const routes: Routes = [
     loadComponent: () => import('./features/reviews-rating/reviews-rating').then((c) => c.ReviewsRating),
   },
   {
-    path: 'chat',
-    loadChildren: () =>
-      import('./features/chat/chat-routes').then((m) => m.CHAT_ROUTES),
-  },
-  {
     path: 'payment',
     loadChildren: () =>
       import('./features/payment/payment.routes').then((m) => m.PAYMENT_ROUTES),
   },
+    {
+    path: 'hope',
+    canActivate: [AuthGuard],
+    loadComponent: () =>
+      import('./features/chat/chatt/chatt').then((c) => c.Chatt),
+  },
+
+  // --------------------------
+  // Payment Module (Lazy)
+  // --------------------------
+  {
+    path: 'payment',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./features/payment/payment.routes').then(
+        (m) => m.PAYMENT_ROUTES
+      ),
+  },
+
+  // Wildcard
+  { path: '**', redirectTo: 'auth' },
 ];

@@ -1,45 +1,77 @@
-<div class="container py-4 w-25 border-1">
-  <h4 class="fw-semibold mb-4 text-center">Payment Method</h4>
+<div class="container py-4">
 
-  <!-- Credit/Debit Cards -->
-  <div class="mb-4">
-    <h6 class="fw-bold text-secondary">Credit / Debit Card</h6>
-    <div class="list-group">
-      <div class="dropdown border-1 rounded mb-2">
-        <button class="btn w-100 d-flex justify-content-between align-items-center dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          Visa
-        </button>
-        <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item">Visa</a></li>
-          <li><a class="dropdown-item">Debit</a></li>
-          <li><a class="dropdown-item">Credit</a></li>
-        </ul>
+  <!-- Header -->
+  <div class="d-flex align-items-center mb-3">
+    <i
+    (click)="backToHome()"
+    class="fa-solid fa-arrow-left me-3"></i>
+    <h4 class="mb-0 fw-semibold">Payment Method</h4>
+  </div>
+
+  <!-- Credit / Debit -->
+  <div class="mt-4">
+    <h6 class="section-title">Credit / Debit Card</h6>
+
+    <div class="method-card d-flex align-items-center justify-content-between"
+      (click)="selectWallet('visa')"
+    >
+      <div class="d-flex align-items-center">
+        <img src="assets/images/visa.png" class="method-icon me-3" alt="">
+        <span class="fw-semibold">VISA</span>
       </div>
-      <div class="dropdown">
-        <button class="btn w-100 d-flex justify-content-between align-items-center dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-          Master Card
-        </button>
-        <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton2">
-          <li><a class="dropdown-item">Master Card</a></li>
-          <li><a class="dropdown-item">Meeza</a></li>
-        </ul>
+      <i class="fa-solid fa-chevron-right"></i>
+    </div>
+
+    <div class="method-card d-flex align-items-center justify-content-between"
+      (click)="selectWallet('mastercard')"
+    >
+      <div class="d-flex align-items-center">
+        <img src="assets/images/mastercard.png" class="method-icon me-3" alt="">
+        <span class="fw-semibold">MasterCard</span>
       </div>
+      <i class="fa-solid fa-chevron-right"></i>
     </div>
   </div>
 
   <!-- Mobile Wallets -->
-  <div class="mobile-wallets">
-    <h6 class="fw-bold text-secondary">Mobile Wallets</h6>
-    <div class="list-group">
-      <label class="list-group-item border-0 rounded mb-2 d-flex justify-content-between align-items-center">
-        <div><img src="assets/applepay.png" height="20" class="me-2"> Apple Pay</div>
-        <input class="form-check-input" type="radio" name="wallet">
-      </label>
+  <div class="mt-4">
+    <h6 class="section-title">Mobile Wallets</h6>
 
-      <label class="list-group-item border-0 rounded mb-2 d-flex justify-content-between align-items-center">
-        <div><img src="assets/paypal.png" height="20" class="me-2"> PayPal</div>
-        <input class="form-check-input" type="radio" name="wallet">
-      </label>
+    <!-- Apple Pay -->
+    <div
+      class="method-card d-flex align-items-center justify-content-between"
+      (click)="selectWallet('apple pay')"
+      [ngClass]="{ 'selected' : selectedWallet === 'apple pay' }">
+
+      <div class="d-flex align-items-center">
+        <img src="assets/images/apple-pay.png" class="method-icon me-3" alt="">
+        <span class="fw-semibold">Apple Pay</span>
+      </div>
+
+      <div class="circle" [ngClass]="{ 'active': selectedWallet === 'apple pay' }"></div>
     </div>
+
+    <!-- PayPal -->
+    <div
+      class="method-card d-flex align-items-center justify-content-between"
+      (click)="selectWallet('paypal')"
+      [ngClass]="{ 'selected' : selectedWallet === 'paypal' }">
+
+      <div class="d-flex align-items-center">
+        <img src="assets/images/paypal.png" class="method-icon me-3" alt="">
+        <span class="fw-semibold">PayPal</span>
+      </div>
+
+      <div class="circle" [ngClass]="{ 'active': selectedWallet === 'paypal' }"></div>
+    </div>
+
   </div>
+  <button
+  (click)="navigateToAddCMP()"
+  class="btn bg-primary w-100"
+  [class.invalid]="!selectedWallet"
+  [disabled]="!selectedWallet"
+  >
+    Add Card
+  </button>
 </div>
