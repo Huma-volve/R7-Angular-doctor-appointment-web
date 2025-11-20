@@ -79,6 +79,11 @@ export const routes: Routes = [
         (m) => m.PAYMENT_ROUTES
       ),
   },
+  
+  {
+    path:'favorite',
+    loadComponent: () => import('./features/favorite/favorite').then((c)=>c.Favorite),
+  },
 
   // Wildcard
   { path: '**', redirectTo: 'auth' },

@@ -6,6 +6,7 @@
 
 
 /* Apply Material 3 Theme */
+// @import 'ngx-toastr/toastr-bs4-alert';
 html {
   @include mat.theme((
     color: (
@@ -20,22 +21,59 @@ html {
    YOUR GLOBAL STYLES
    ============================ */
 
+
+
+
+
 body {
   color-scheme: light;
   font-family: var(--main-font);
   margin: 0;
   font-family: var(--main-font) !important;
+
+    
 }
+
+
 
 :root {
   --main-color: #145db8;
   --secondary-color: #e8eff8;
-  --main-font: Georgia, "Times New Roman", Times, serif;
+  // --main-font: Georgia, "Times New Roman", Times, serif;
 
-  --main-doc-font: "Noto Sans Georgian", sans-serif;
-  --second-font: "Montserrat", sans-serif;
+  // --main-doc-font: "Noto Sans Georgian", sans-serif;
+  // --second-font: "Montserrat", sans-serif;
+
+    --main-font: "Inter", sans-serif;
+  
+ --title-font: "Poppins", sans-serif;
+      --ui-font: "Nunito", sans-serif;
   --main-doc-color: #6D7379;
   --secondary-doc-color: #05162C;
+}
+
+// Success Toast
+.toast-success {
+  background-color: var(--main-color) !important; // الأخضر
+  color: #fff !important;
+}
+
+// Error Toast
+.toast-error {
+  background-color: #F44336 !important; // الأحمر
+  color: #fff !important;
+}
+
+// Info Toast
+.toast-info {
+  background-color: #2196F3 !important; // الأزرق
+  color: #fff !important;
+}
+
+// Warning Toast
+.toast-warning {
+  background-color: #FF9800 !important; // البرتقالي
+  color: #fff !important;
 }
 
 .btn-main {

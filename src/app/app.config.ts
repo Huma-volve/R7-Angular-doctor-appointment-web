@@ -44,6 +44,12 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
 
 
+provideToastr({
+      timeOut: 6000,
+      positionClass: 'toast-bottom-center',
+      preventDuplicates: true,
+    }),
+    
   ]
 };
 

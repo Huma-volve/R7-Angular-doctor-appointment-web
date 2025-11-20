@@ -14,6 +14,7 @@ import { SearchAllDoctorsPipe } from '../../core/pipe/search-all-doctors-pipe';
 import { INotificationItem, INotificationsResponse } from '../../core/interfaces/Inotification';
 import { ReadNotification } from '../../core/services/read-notification';
 import { A11yModule } from "@angular/cdk/a11y";
+import { StatusNotifiction } from '../../core/services/status-notifiction';
 import { AuthService } from '../../auth/components/auth.service';
 
 @Component({
@@ -25,29 +26,26 @@ import { AuthService } from '../../auth/components/auth.service';
 })
 export class MainNavbar {
 
-constructor(private routes: Router , private _GetNotificationByUser: GetNotificationByUser,private _searchAllDoctors: SearchAllDorctors,private _ReadNotification:ReadNotification) {}
+constructor(private routes: Router , private _GetNotificationByUser: GetNotificationByUser,private _searchAllDoctors: SearchAllDorctors,private _ReadNotification:ReadNotification,public _statusNotification:StatusNotifiction) {}
 
-//  arrSearchAllDorctors = signal<ITopRatedDoctors[]>([])
- arrSearchAllDorctors !:ITopRatedDoctors[]
- arrNotification = signal <INotificationItem[]> ([])
+ arrSearchAllDorctors !:ITopRatedDoctors[] 
 
-//  showDivSearch:boolean = false;
 valueInputSearch :string = ''
 
 ngOnInit() {
-
+this.Location()
   this.searchAllDoctors()
   this.getAllnotification()
+ 
 }
 
 
 getAllnotification():void{
     this._GetNotificationByUser.getNotificationByUser().subscribe((res:INotificationsResponse)=>{
-    this.arrNotification.set(res.data.reverse())
+    this._statusNotification.setNotifications(res.data.reverse())
   })
 
 }
-
 
 ReadNotification(notification:INotificationItem):void{
 this._ReadNotification.RescheduleBooking(notification.id).subscribe({
@@ -92,6 +90,27 @@ this._searchAllDoctors.searchAllDorators().subscribe({
     this.arrSearchAllDorctors = res.data
   }
 })
+}
+
+Location():void{
+
+    navigator.geolocation.getCurrentPosition((position:any)=>{
+      this.getLocationName(position.coords.latitude,position.coords.longitude)
+    })
+  
+
+
+}
+
+locationName!:string
+getLocationName(lat: number, lng: number) {
+  fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=en`)
+    .then(res => res.json())
+    .then(data => {
+      const MlocationName = data.city || data.locality || data.principalSubdivision;
+    this.locationName =  ` ${MlocationName}` 
+    })
+    .catch(err => console.log("Error:", err));
 }
 
 
