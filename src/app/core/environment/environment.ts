@@ -1,5 +1,5 @@
 export const environment = {
-  
+
   endpoints:{
     doctors:{
       getalldoctors:'api/Customer/Doctors/GetAllDoctors',
@@ -18,3 +18,4 @@ export const environment = {
   },
 
 };
+

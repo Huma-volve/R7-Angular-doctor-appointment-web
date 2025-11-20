@@ -7,7 +7,7 @@ import { ProfileService } from '../profileservise';
 import { updateuserdata } from '../profileinterface';
 @Component({
   selector: 'app-personalinfo',
-  imports: [CommonModule, FormsModule, AuthContainerComponent],
+  imports: [CommonModule, FormsModule, ],
   templateUrl: './personalinfo.html',
   styleUrl: './personalinfo.scss',
 })
