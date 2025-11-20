@@ -1,0 +1,44 @@
+<!-- Reviews Header -->
+<div class="reviews-count my-5">
+  <div class="d-flex align-items-center">
+    <p class="h1 flex-grow-1">{{ rating }}/5</p>
+
+    <div class="stars text-center fs-4 d-flex flex-column">
+      <div>
+        @for (star of [].constructor(maxStars); track $index) {
+          <i
+            class="fa-star"
+            [class.fas]="($index + 1) <= rating"
+            [class.far]="($index + 1) > rating"
+          ></i>
+        }
+      </div>
+      <small>1250+ Reviews</small>
+    </div>
+  </div>
+</div>
+
+<!-- Scrollable Reviews Slider -->
+<div #slider class="reviews-slider d-flex gap-3 overflow-auto snap-x pb-3">
+  @for (review of reviews(); track review.id) {
+    <div class="review-card card flex-shrink-0 p-3">
+      <div class="d-flex align-items-center mb-2">
+        <img
+          [src]="review.img"
+          alt="User photo"
+          class="rounded-circle me-2"
+          style="width:50px; height:50px; object-fit:cover;"
+        />
+
+        <div class="flex-grow-1">
+          <h6 class="mb-0 fw-semibold">{{ review.name }}</h6>
+          <small class="text-secondary">{{ review.time }}</small>
+        </div>
+
+        <span class="rating-badge ms-2">{{ review.rating }} ★</span>
+      </div>
+
+      <p class="mb-0 small">{{ review.text }}</p>
+    </div>
+  }
+</div>

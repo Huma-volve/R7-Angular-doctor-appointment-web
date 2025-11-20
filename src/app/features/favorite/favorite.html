@@ -1,0 +1,55 @@
+<app-main-navbar></app-main-navbar>
+
+<section class="margin-top d-flex col-12 col-md-12 col-lg-auto flex-column flex-wrap  flex-md-row justify-content-center  align-items-center gap-5">
+  @for(doctors of arrFavouriteDoctors() ; track $index) {
+
+<div [@fade]   class=" col-12 col-md-7 col-lg-4  col-xxl-3 border  shadow  rounded-4 p-3 position-relative">
+  <!-- <i class="fa-regular fa-heart fa-xl fav-icon"></i> -->
+  <i (click)="fnRemoveFavourite(doctors)"  class="fa-solid fa-heart fa-lg" ></i>
+  <div class="d-flex align-items-center gap-3">
+    <img   style=" height: 80px;"  class="rounded-5 doctor-img"
+      
+      [src]="doctors.imgUrl || 'https://cure-doctor-booking.runasp.net/images/users/doctor1.jpg'"
+      alt=""
+    />
+
+    <div class="d-flex flex-column">
+      <p class="fw-semibold m-0">{{ doctors.fullName }}</p>
+      <p class="text-muted m-0 small">{{ doctors.address }}</p>
+
+      <div class="d-flex align-items-center gap-3 mt-1">
+        <div class="d-flex align-items-center gap-1">
+          <img class="icon" src="../../../assets/images/doctorSwiper/stars.png" alt="">
+          <span>{{ doctors.rating }}</span>
+        </div>
+
+        <div class="d-flex align-items-center gap-1">
+          <img class="icon" src="../../../assets/images/doctorSwiper/Clock Circle.png" alt="">
+          <span>{{ doctors.startDate || '11:00' }} - {{ doctors.endDate || '12:00' }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="d-flex justify-content-between align-items-center">
+    <p class="m-0">Price <span class="text-muted">/hour</span></p>
+    <span class="text-danger fw-semibold">${{ doctors.price }}</span>
+  </div>
+
+  <button [routerLink]="['/appointment',doctors.id]" class="btn-main mt-2 w-100">Book appointment</button>
+</div>
+
+  }
+
+
+  @if (arrFavouriteDoctors().length == 0 ) {
+ <div [@fade]  class="d-flex h-100 flex-column justify-content-center align-items-center gap-2 ">
+     <h3>Your favourites list is empty</h3>
+   <img  class="rounded-circle col-12 col-md-6 col-xl-4 " src="../../../assets/images/notFound/Booking.jpg" alt="">
+</div>  
+}
+</section>
+
+<app-main-footer></app-main-footer>

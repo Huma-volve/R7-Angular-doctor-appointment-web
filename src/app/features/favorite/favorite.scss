@@ -1,0 +1,61 @@
+.margin-top{
+    margin-top: 10rem;
+}
+
+.doctor-img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    background-color: #fff;
+    /* مهم علشان contain */
+    padding: 4px;
+    /* يخلي الصورة متنسحقش */
+}
+// .doctor-card {
+//     background: #fff;
+//     // width: 100%;
+// }
+
+// .doctor-img {
+//     width: 90px;
+//     height: 90px;
+//     object-fit: cover;
+// }
+
+// .icon {
+//     width: 16px;
+//     height: 16px;
+// }
+
+.fa-solid {
+    position: absolute;
+    top: 19px;
+    right: 20px;
+    cursor: pointer;
+    color: #d60000;
+}
+
+.margin-top{
+    margin-top: 10rem;
+}
+//   section {
+    //   height: 50vh;
+//   }
+/* Responsive tweaks */
+
+@media (max-width: 768px) {
+   
+}
+@media (min-width: 768px) {
+    .doctor-img {
+        width: 120px;
+        height: 120px;
+    }
+  
+}
+
+@media (min-width: 1200px) {
+    .doctor-card {
+        padding: 20px;
+    }
+}

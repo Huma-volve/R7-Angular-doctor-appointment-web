@@ -1,5 +1,5 @@
 <div class="form-container d-flex justify-content-center justify-content-xl-start g-2 ms-xl-5 ps-xl-5 mt-xl-5">
-    <form #otpForm="ngForm" (ngSubmit)="onSubmit(otpForm)" class="overflow-hidden p-5 mt-xl-5 ms-xl-5 d-flex align-items-center justify-content-center flex-column">
+    <form #otpForm="ngForm" class="overflow-hidden p-5 mt-xl-5 ms-xl-5 d-flex align-items-center justify-content-center flex-column">
 
       <!-- Code Verification -->
       <div class="header text-center">
@@ -19,15 +19,15 @@
             <input type="text" maxlength="1" class="otp-input"/>
           </div>
         <div class="counter-container text-center">
-          @if(!isFinished()){
+          <!-- @if(!isFinished()){
             <p>Resend code in <span class="text-primary">{{counter()}}</span> s</p>
           }
-          @else{
+          @else{ -->
             <span class="d-block text-danger">Wrong code</span>
             <p class="d-flex justify-content-center align-items-center">
               <span class="btn text-primary">Resend</span> Or <span class="btn text-primary">Enter another phone number</span>
             </p>
-          }
+          <!-- } -->
         </div>
         <div class="form-button">
           <a class="btn btn-primary border w-100 d-flex align-items-center justify-content-center p-2 gap-2 mb-3">Verify</a>

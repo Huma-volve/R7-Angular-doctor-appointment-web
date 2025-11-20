@@ -2,7 +2,7 @@
 
 
 
-<section class=" d-flex mt-5 pt-5  flex-column justify-content-center align-items-center align-items-md-start p-2 ">
+<section  class=" d-flex mt-5 pt-5  flex-column justify-content-center align-items-center align-items-md-start p-2 ">
     
      <h2 class="mt-5 p-2 ">Your appointments</h2>
 
@@ -10,40 +10,53 @@
 <div class="d-flex flex-column flex-md-row col-12 justify-content-between align-items-center p-2">
 
 <div class="d-flex justify-content-center flex-column flex-md-row align-items-center gap-md-1 gap-4 p-2">
-    <a style="background-color: #145DB8;" class=" text-white text-white p-3 rounded-3" href="">All</a>
-    <a class=" btncolor p-3 rounded-3" href="">Upcoming</a>
-    <a class="btncolor p-3 rounded-3" href="">Completed</a>
-    <a class="btncolor  p-3 rounded-3" href="">Canceled</a>
-
+   @for (bar of arrBars; track $index) {
+    <a style="color: #6D7379 ; cursor: pointer;" [ngClass]="{'btncolor':selected == bar}"   (click)="switchStatus(bar);" class=" p-3 rounded-3 text-capitalize">{{bar}}</a>
+}
 </div>
 
 
-
-    <mat-form-field appearance="outline">
+<!-- filter -->
+<mat-form-field  appearance="outline">
   <mat-label>اختر التاريخ</mat-label>
-  <input matInput [matDatepicker]="picker">
-  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-</mat-form-field>   
+  <input matInput [matDatepicker]="picker1" (dateChange)="filterWithTime()" [(ngModel)]="selectedDate">
+  <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+  <mat-datepicker #picker1></mat-datepicker>
+</mat-form-field>
+
+
+<!-- <mat-form-field [ngClass]="{'d-block': picker2, 'd-none': !picker2}" appearance="outline">
+  <mat-label>تعيين التاريخ</mat-label>
+  <input matInput [matDatepicker]="picker2" >
+  <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+  <mat-datepicker #picker2></mat-datepicker>
+</mat-form-field> -->
+
+
+
+    
+
+
 </div>
 
    
 <div class="parent d-flex col-12 col-md-12 col-lg-auto flex-column flex-wrap  flex-md-row justify-content-center  align-items-center gap-5">
-    <div *ngFor="let i of [1,2,3,4,5,6,7,8,9]" class="p-md-4  col-12 col-md-8 col-lg-auto border border-3 d-flex flex-column align-items-center justify-content-center g-3 rounded-5  border-light">
+@for (patient of filteredBookings() | paginate: { itemsPerPage: itemsPerPage, currentPage: p }; track $index) {
+    <div [@fade] class="p-md-4  col-12 col-md-8 col-lg-auto border border-3 d-flex flex-column align-items-center justify-content-center g-3 rounded-5  border-light">
     <!-- date -->
     <div class="d-flex p-2 flex-column flex-md-row col-12 justify-content-between align-items-center  ">
-       <p style="color: #6D7379;" class="d-flex   justify-content-center align-items-center"><img  src="../../../assets/images/appointments/calendar-02.png" alt="">Monday, July 21 - 11:00 Am</p>
-       <a href="">Upcoming</a>
+       <p style="color: #6D7379;" class="d-flex   justify-content-center align-items-center"><img class="me-1" src="../../../assets/images/appointments/calendar-02.png" alt=""> {{patient.appointmentAt | date:'dd/MM/yyyy'}}</p>
+       <a  [ngClass]="{'text-danger':patient.status == 'Cancelled','tex-primary':patient.status == 'Pending'}" >{{patient.status}}</a>
     </div>
 
     <hr class="col-12">
 
     <!-- name Doctor-->
      <div class="d-flex p-1 justify-content-start align-items-center col-12 gap-2">
-        <img  class="" src="../../../assets/images/appointments/doctor1.png" alt="">
+        <img style="width:50px;" class="rounded-circle " [src]="patient.doctorImg ||'../../../assets/images/profile.png'" alt="">
         <div>
-           <p>Jennifer Miller</p>  
-           <p style="color: #6D7379;">Psychiatrist</p>  
+           <p>{{patient.doctorName}}</p>  
+           <p style="color: #6D7379;">{{patient.doctorSpeciality}}</p>  
         </div>
       
      </div>
@@ -56,19 +69,37 @@
 
 <!-- buttons -->
    <div class="d-flex justify-content-center align-items-center gap-2 p-4">
+<!-- buttons pending -->
+<a (click)="cancelBooking(patient)" [ngClass]="{'d-block':patient.status == 'Pending','d-none':patient.status == 'Cancelled'}"  style="background-color: white; color:#145DB8 ; border-color: #145DB8; cursor: pointer;" class="p-2 px-lg-5 py-lg-3 rounded-3 font border ">Cancel</a>
+<a (click)="RescheduleBooking(patient)" [ngClass]="{'d-block':patient.status == 'Pending','d-none':patient.status == 'Cancelled'}"  style="background-color: #145DB8; cursor: pointer;" class="p-2  px-lg-5 py-lg-3 rounded-3 font text-white ">Reschedule</a>
 
-<a href="" style="background-color: white; color:#145DB8 ; border-color: #145DB8;" class="p-2 px-lg-5 py-lg-3 rounded-3 font border ">Reschedule</a>
-<a href="" style="background-color: #145DB8;" class="p-2 px-lg-5 py-lg-3 rounded-3 font text-white ">Reschedule</a>
+<!-- button cancel -->
+<a  [routerLink]="['/appointment',patient.id]" [ngClass]="{'d-block':patient.status == 'Cancelled','d-none':patient.status == 'Pending'}"  style="background-color: white; color:#145DB8 ; border-color: #145DB8; cursor: pointer;" class="p-2 px-lg-5 py-lg-3  rounded-3 font border ">Book again</a>
+<a  [ngClass]="{'d-block':patient.status == 'Cancelled','d-none':patient.status == 'Pending'}"  style="background-color: #145DB8; cursor: pointer;" class="p-2   px-lg-5 py-lg-3 rounded-3 font text-white ">Support</a>
+
+
 </div>   
 
 
 </div>
 
+}
 
-
+@if (filteredBookings().length == 0) {
+ <div [@fade]  class="d-flex h-100 flex-column justify-content-center align-items-center gap-2 ">
+   <h3>No data available</h3>
+   <img  class="rounded-circle col-12 col-md-6 col-xl-4 " src="../../../assets/images/notFound/Booking.jpg" alt="">
+</div>  
+}
 </div>
+
+
+
 
 </section>
 
-
+<div class="d-flex justify-content-center align-items-start mt-5">
+    <pagination-controls (pageChange)="p = $event">
+    </pagination-controls>
+</div>
  <app-main-footer></app-main-footer>

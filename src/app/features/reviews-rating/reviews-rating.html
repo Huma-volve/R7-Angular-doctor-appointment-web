@@ -1,0 +1,16 @@
+<section class="border rounded w-50 mx-auto mt-4 p-4">
+  <p class="d-flex justify-content-between align-items-center">
+  <span>
+    Reviews and Rating
+  </span>
+  <span (click)="onAddReviewClicked()" class="btn border-0 text-primary">
+    <i class="fa-solid fa-pencil"></i>
+    add review
+  </span>
+  </p>
+  @if(addreviewbtnclicked()){
+    <app-add-review (closeDialog)="Dialog()"></app-add-review>
+  }
+  <hr>
+  <app-reviews/>
+</section>

@@ -1,0 +1,53 @@
+<div class="chat-window">
+    <!-- Chat Header -->
+  @if(receiverId){
+    <div class="chat-header">
+      <img class="p-2" [src]="selectedUser.img ? selectedUser.img  : './assets/images/user2.png'" alt="User Avatar">
+      <span class="chat-name">{{selectedUser.name}}</span>
+    </div>
+  }
+
+  <div #messagesContainer class="messages">
+      @if(messages()){
+    @for( msg of messages(); track msg.id){
+    <div class="message-row" [ngClass]="msg.isPatient ? 'outgoing' : 'incoming'">
+      <div class="bubble">
+        <div class="content">{{ msg.content }}</div>
+        <div class="meta">
+          <span class="time">{{ msg.sentAt | date:'shortTime' }}</span>
+          <span class="status" *ngIf="msg.isPatient">
+            <i *ngIf="!msg.isRead" class="fa fa-check single"></i>
+            <i *ngIf="msg.isRead" class="fa fa-check-double double"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+  }
+  }
+  </div>
+
+  <div class="chat-input-wrapper">
+    <input
+      type="text"
+      class="chat-input"
+      placeholder="Type a message..."
+      [(ngModel)]="content"
+      (keydown.enter)="sendMessage()"
+    />
+
+    <div class="input-actions">
+      <button class="icon-btn attach-btn" title="Attach File">
+        <i class="fa-solid fa-paperclip"></i>
+      </button>
+      <button class="icon-btn attach-btn" title="Record Audio">
+        <i class="fa-solid fa-microphone"></i>
+      </button>
+      <button class="icon-btn attach-btn" title="Attach Video">
+        <i class="fa-solid fa-camera"></i>
+      </button>
+      <button class="icon-btn arrow-btn" (click)="sendMessage()">
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+</div>

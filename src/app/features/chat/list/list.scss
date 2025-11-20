@@ -1,0 +1,86 @@
+/* Doctor Chat List */
+.chat-list{
+  height: 100%;
+}
+.doctor-chat-list {
+  min-width: 400px;
+  height: fit-content;
+  overflow-y: auto;
+  padding-right: 5px;
+  overflow: hidden;
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.2);
+    border-radius: 3px;
+  }
+
+  .chat-tap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 4px 5px;
+    border-radius: 10px;
+    transition: background-color 0.2s, transform 0.1s;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(116, 116, 207, 0.1);
+      transform: translateX(2px);
+    }
+
+    img {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .docotr-info {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      p {
+        margin: 0;
+        font-weight: 600;
+        font-size: 1rem;
+        color: #333;
+      }
+
+      span {
+        font-size: 0.85rem;
+        color: #666;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+
+    .time {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      font-size: 0.75rem;
+      color: #28a745;
+
+      small {
+        display: block;
+      }
+    }
+
+    &.activated {
+      background-color: rgb(116, 116, 207, 0.2);
+    }
+  }
+}
+
+/* Scrollable doctor list with spacing */
+.doctor-chat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

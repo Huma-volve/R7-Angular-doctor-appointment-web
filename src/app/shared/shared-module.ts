@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MainNavbar } from './main-navbar/main-navbar';
 import { MainFooter } from './main-footer/main-footer';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -10,6 +11,6 @@ import { MainFooter } from './main-footer/main-footer';
   imports: [
     CommonModule,MainNavbar,MainFooter
   ],
-  exports: [CommonModule,MainNavbar,MainFooter]
+  exports: [CommonModule,MainNavbar,MainFooter,FormsModule]
 })
 export class SharedModule { }

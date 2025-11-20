@@ -1,0 +1,28 @@
+section{
+  p {
+    span {
+      &:nth-child(2):hover {
+        color: rgb(38, 72, 136) !important;
+      }
+    }
+  }
+}
+.overlay{
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.3);
+}
+.rating {
+  cursor: pointer;
+  font-size: 2rem;
+
+  span {
+    margin-right: 5px;
+  }
+}
+
