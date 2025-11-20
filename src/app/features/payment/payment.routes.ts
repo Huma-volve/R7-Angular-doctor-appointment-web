@@ -22,13 +22,6 @@ export const PAYMENT_ROUTES: Routes = [
           ),
       },
       {
-        path: 'empty-card',
-        loadComponent: () =>
-          import('./empty-card/empty-card').then(
-            (m) => m.EmptyCard
-          ),
-      },
-      {
         path: 'add-card',
         loadComponent: () =>
           import('./add-card/add-card').then(

@@ -15,6 +15,7 @@ import { INotificationItem, INotificationsResponse } from '../../core/interfaces
 import { ReadNotification } from '../../core/services/read-notification';
 import { A11yModule } from "@angular/cdk/a11y";
 import { StatusNotifiction } from '../../core/services/status-notifiction';
+import { AuthService } from '../../auth/components/auth.service';
 
 @Component({
   selector: 'app-main-navbar',
@@ -114,6 +115,10 @@ getLocationName(lat: number, lng: number) {
 
 
 
+logout(){
+  localStorage.removeItem('userToken'); //Remove Token
+  this.routes.navigate(['/auth/sign-in']) //Go to sign in page
+}
 
 
 
