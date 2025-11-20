@@ -1,11 +1,8 @@
 
-.btncolor{
-        color: #6D7379;
 
-}
-.btncolor:hover {
+.btncolor {
     background-color:#145DB8;
-    color: white;
+    color: white !important;
     cursor: pointer;
     transition: all 0.5s;
 }

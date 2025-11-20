@@ -1,0 +1,60 @@
+<section
+  class="form-container d-flex justify-content-center justify-content-xl-start g-2 ms-xl-5 ps-xl-5 mt-xl-5"
+>
+  <main class="overflow-hidden p-5 d-flex align-items-center justify-content-center flex-column">
+    <!-- Code Verification -->
+    <div class="header text-center">
+      <h1 class="h2 mb-2">Code Verification</h1>
+      <p class="text-muted">
+        Code has been send to your phone number
+        <span class="d-block text-primary">Check your phone number</span>
+      </p>
+    </div>
+
+    <form
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+      class="p-5"
+    >
+      <!-- Validation & Timer -->
+      <div class="form-controls w-100">
+        <div class="otp-inputs">
+          <input type="text" formControlName="c1" maxlength="1" class="otp-input" />
+          <input type="text" formControlName="c2" maxlength="1" class="otp-input" />
+          <input type="text" formControlName="c3" maxlength="1" class="otp-input" />
+          <input type="text" formControlName="c4" maxlength="1" class="otp-input" />
+        </div>
+        <div class="counter-container text-center mb-3">
+          @if(!isFinished()){
+              <p>Resend code in <span class="text-primary">{{counter()}}</span> s</p>
+            }
+            @else{
+          <span class="d-block text-danger">Wrong code</span>
+          <p class="d-flex justify-content-center align-items-center">
+            <span class="btn text-primary"><a (click)="resend()">
+              Resend
+            </a></span> Or
+            <span class="btn text-primary">
+              <a (click)="setAnotherPhoneNumber()">
+                Enter another phone number
+              </a>
+            </span>
+          </p>
+          }
+        </div>
+        <div class="form-button">
+          <button
+            class="btn btn-primary border w-100 d-flex align-items-center justify-content-center p-2 gap-2 mb-3"
+            [disabled]="form.invalid"
+            [class.disabled]="form.invalid"
+          >
+            Verify
+          </button>
+        </div>
+      </div>
+      <!-- Validation & Timer/-->
+
+      <!-- Code Verification/-->
+    </form>
+  </main>
+</section>
