@@ -1,5 +1,5 @@
 export const environment = {
-
+   baseUrl : 'https://cure-doctor-booking.runasp.net/',
   endpoints:{
     doctors:{
       getalldoctors:'api/Customer/Doctors/GetAllDoctors',
