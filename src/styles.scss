@@ -2,7 +2,7 @@
    MATERIAL THEME (Angular 20)
    ============================ */
 @use '@angular/material' as mat;
-@import 'ngx-toastr/toastr';
+// @import 'ngx-toastr/toastr';
 
 
 /* Apply Material 3 Theme */
@@ -16,11 +16,6 @@ html {
     density: 0,
   ));
 }
-
-/* ============================
-   YOUR GLOBAL STYLES
-   ============================ */
-
 
 
 

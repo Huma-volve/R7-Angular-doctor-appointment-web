@@ -3,14 +3,16 @@ import { MainFooter } from '../../../shared/main-footer/main-footer';
 import { List } from "../list/list";
 import { Messages } from '../messages/messages';
 import { CommonModule } from '@angular/common';
+import { MainNavbar } from "../../../shared/main-navbar/main-navbar";
 
 
 
 @Component({
   selector: 'app-chatt',
-  imports: [MainFooter, List, Messages, CommonModule],
+  imports: [MainFooter, List, Messages, CommonModule, MainNavbar],
   templateUrl: './chatt.html',
   styleUrls: ['./chatt.scss'],
+  standalone:true,
 })
 export class Chatt implements OnInit {
   receiverId = '';
