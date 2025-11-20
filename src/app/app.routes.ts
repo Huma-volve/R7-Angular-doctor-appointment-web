@@ -45,5 +45,5 @@ export const routes: Routes = [
     path: 'booking',
     loadComponent: () => import('./features/booking/booking').then((c) => c.Booking),
   },
-  {path:"appointment", loadComponent:()=>import('./features/appointment/appointment').then((c)=>c.Appointment)}
+  {path:"appointment/:id", loadComponent:()=>import('./features/appointment/appointment').then((c)=>c.Appointment)}
 ];

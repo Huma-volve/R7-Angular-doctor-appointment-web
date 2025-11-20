@@ -213,3 +213,13 @@ input[type="checkbox"]:checked::after ,.sort input[type="radio"]:checked::after{
   color: white;
   border-color: var(--main-color);
 }
+
+
+
+
+@media (max-width:768px){
+  .fiterinsm{
+    display: none !important;
+  }
+
+}
