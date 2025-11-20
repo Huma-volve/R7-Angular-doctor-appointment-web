@@ -1,6 +1,6 @@
 <app-main-navbar></app-main-navbar>
 <!-- section intro -->
-<section style="height: 100vh;" class="introSection position-relative mt-5 ">
+<section style="height: 100vh; " class="introSection position-relative mt-5 ">
 
 <img class="position-absolute  start-50 top-50 translate-middle"  src="../../../assets/images/intro_secton/Ellipse-1.png" alt="">
 <img class="position-absolute  start-50 top-50   translate-middle  " src="../../../assets/images/intro_secton/Ellipse-2.png" alt="">
@@ -48,8 +48,8 @@
 
 
           <div  class="d-flex flex-column flex-md-row rounded-5  p-3 justify-content-center gap-2 gap-md-5 align-items-center ">
-            <button style="background-color: #145DB8;" type="button" class=" col-12 col-md-auto btn btn-primary text-white  px-xl-5  py-xl-2 ">Get started</button>
-            <button  type="button" class="btn btn-outline-primary     px-xl-5 col-12 col-md-auto py-xl-2 d-flex align-items-center justify-content-center gap-1 "><img class="w-auto" src="/images/intro_secton/book.png" alt=""> Book Appointment</button>
+            <button [routerLink]="['/doctorlist']" style="background-color: #145DB8;" type="button" class=" col-12 col-md-auto btn btn-primary text-white  px-xl-5  py-xl-2 ">Get started</button>
+            <button [routerLink]="['/doctorlist']"  type="button" class="btn btn-outline-primary     px-xl-5 col-12 col-md-auto py-xl-2 d-flex align-items-center justify-content-center gap-1 "><img class="w-auto" src="/images/intro_secton/book.png" alt=""> Book Appointment</button>
 
           </div>
 
@@ -62,7 +62,7 @@
 
 
 <!-- section How It work -->
- <section class="d-flex flex-column flex-md-row p-1 position-relative z-1 justify-content-center gap-3 align-items-center ">
+ <section id="howItWork" class="d-flex flex-column flex-md-row p-1 position-relative z-1 justify-content-center gap-3 align-items-center ">
 <!-- box1 -->
   <div class="p-3 col-12 col-md-4 col-xxl-auto  ">
 <img class="w-100"  src="../../../assets/images/How_it_work_section/Frame1.png" alt="">
@@ -84,7 +84,7 @@
 <div class="p-4 col-12 col-lg-6 col-xl-4 ">
 <h2 class="fs-3 fs-md-1">Find Care Near You in Seconds</h2>
 <p style="color: #6D7379;" class="fw-bold fs-5">Allow location access or choose your city to instantly discover trusted doctors and clinics around you—quick, easy, and local.</p>
-<button type="button" class="btn btn-outline-primary p-2 d-flex gap-1 justify-content-center align-items-center "><img src="../../../assets/images/sectionMap/search.png" alt="">Search by location</button>
+<button (click)="Search_By_Location()" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-outline-primary mt-2 p-2 d-flex gap-1 justify-content-center align-items-center "><img src="../../../assets/images/sectionMap/search.png" alt="">Search by location</button>
 </div>
 
 <div class="p-4 col-12 col-md-6  col-xl-4    ">
@@ -95,6 +95,45 @@
   </section>
 
 
+
+<!-- Modal -->
+<div  class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button #closeBtn  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+<div class="modal-body">
+       @for (location of arrSearchByLocation(); track $index) {
+      
+    <div (click)="fnCloseModal()" [routerLink]="['/appointment',location.id]" style="cursor: pointer;" class="d-flex backgroundHover rounded-4 justify-content-evenly align-items-center gap-1 p-1 col-12 ">
+       <img width="80rem" class="bg-secondary rounded-circle" [src]="location.imgUrl || 'https://cure-doctor-booking.runasp.net/images/users/doctor2.jpg'" alt="">
+
+       <div class="d-flex flex-column justify-content-center align-items-center p-1">
+
+         <p class="fw-bold">{{location.fullName}}</p>
+         <p >{{location.specialistTitle}}</p>
+        
+        <p style="color: #6D7379;">{{location.about ||'Skin and laser specialist with expertise in cosmetic dermatology.' | cutPragraph }}...</p>
+
+       </div>
+      
+    </div>
+       }
+            @if (!arrSearchByLocation().length) {
+              <div class="d-flex p-3 justify-content-center flex-column align-items-center gap-4">
+                <i class="fa-solid fa-location-crosshairs fa-xl" style="color: #8b9098;"></i>
+                  <p style="color: #6D7379;" class="fs-5">No nearby results found</p>
+              </div>
+                
+           }
+  </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
@@ -120,9 +159,9 @@
 
 <!-- doctorSwiber -->
 
-<swiper-container class="d-flex mt-5 p-2 py-md-4 px-md-5" loop="true"
-  autoplay-delay="1000" 
+<swiper-container  class="d-flex mt-5 p-2 py-md-4 px-md-5" 
    speed="800"
+    navigation="true"
    breakpoints='{
     "0":   { "slidesPerView": 1, "spaceBetween": 10 },
     "768": { "slidesPerView": 2, "spaceBetween": 11 },
@@ -132,21 +171,25 @@
   
   >
    
-<swiper-slide *ngFor="let i of [1,2,3,4,5,6,7,8,9]">
-<div class="parent border border-white shadow rounded-4 p-md-3 col-12   col-xl-10 d-flex gap-2  flex-column ">
+
+  @for(doctors of arrTopRatedDoctors() ; track $index) {
+<swiper-slide>
+<div class="parent border border-white shadow rounded-4 p-md-3 col-12 position-relative  col-xl-10 d-flex gap-2  flex-column ">
+  <i *ngIf="doctors.isFavourite == false" (click)="fnAddFavourite(doctors)" style="position: absolute; right: 20px; cursor: pointer; top: 30px;" class="fa-regular fa-heart fa-xl"></i>
+  <i *ngIf="doctors.isFavourite" (click)="fnAddFavourite(doctors)" class="fa-solid fa-heart fa-xl"></i>
     <div class="d-flex justify-content-evenly align-items-center  gap-3">
-      <img style="width: 7rem; "  src="../../../assets/images/doctorSwiper/doctor-1.png" alt="">  
+      <img   style=" height: 80px;"  class="rounded-4" [src]="doctors.imgUrl || '../../../assets/images/profile.png'" alt="">  
  
  <!-- name doctor and hospital -->
   <div class="d-flex flex-column justify-content-start">
-    <p class="fw-semibold">Robert Johnson</p>
-    <p style="color: #6D7379;">Orthopedic | El-Nasr Hospital</p>
+    <p class="fw-semibold">{{doctors.fullName}}</p>
+    <p style="color: #6D7379;">{{doctors.address}}</p>
 
     <!-- time and stars -->
     <div class="d-flex justify-content-center  align-items-center gap-3">
         <div class="d-flex  justify-content-center align-items-center gap-1 ">
           <img class="w-100 h-100"  src="../../../assets/images/doctorSwiper/stars.png" alt="">
-       <span>4.8</span>  
+       <span>{{doctors.rating}}</span>  
         </div>
 
         <div class="d-flex justify-content-center  align-items-center gap-1 ">
@@ -167,17 +210,19 @@
  <div class="d-flex justify-content-between align-items-center px-1">
 <p class="m-0"> Price<span style="color: #6D7379;">/hour</span></p>
 
-<span style="color: #FC4B4E;">$350</span>
+<span style="color: #FC4B4E;">${{doctors.price}}</span>
  </div>
 
-<button class="btn-main mt-1 col-12">Book appointment</button>
+<button [routerLink]="['/appointment',doctors.id]" class="btn-main mt-1 col-12">Book appointment</button>
 
 </div>
+</swiper-slide> 
+}
 
 
-</swiper-slide>
 
-  
+
+
 
 </swiper-container>
 
@@ -238,7 +283,7 @@
       aria-labelledby="heading1"
     >
       <div class="accordion-body">
-        empty
+       This app is used to help patients easily find and book appointments with doctors based on specialty, location, and availability. It allows users to search for nearby doctors, view their profiles, and schedule appointments quickly and conveniently.
       </div>
     </div>
   </div>
@@ -266,7 +311,8 @@
       aria-labelledby="heading2"
     >
       <div class="accordion-body">
-        empty
+Is the app free to use?
+Yes, the app is free to use. Patients can search for doctors, view profiles, and book appointments without any cost.
       </div>
     </div>
   </div>
@@ -293,7 +339,8 @@
       aria-labelledby="heading3"
     >
       <div class="accordion-body">
-        empty
+       How can I find a doctor?
+You can find a doctor by using the search feature in the app. You can search by name, specialty, or location. You can also use the “Search by Location” button to automatically find nearby doctors based on your current position.
       </div>
     </div>
   </div>
@@ -320,7 +367,8 @@
       aria-labelledby="heading4"
     >
       <div class="accordion-body">
-        empty
+        Can I cancel my appointment?
+Yes, you can cancel your appointment at any time. Simply go to your bookings page, select the appointment you want to cancel, and follow the cancellation steps.
       </div>
     </div>
   </div>
@@ -347,7 +395,8 @@
       aria-labelledby="heading5"
     >
       <div class="accordion-body">
-        empty
+    What payment methods are supported?
+The app supports multiple payment methods, including cash, credit/debit cards, and online payment options depending on the doctor or clinic’s setup.
       </div>
     </div>
   </div>
@@ -374,7 +423,8 @@
       aria-labelledby="heading6"
     >
       <div class="accordion-body">
-        empty
+      How do I contact customer support?
+You can contact customer support through the “Contact Us” section in the app. You can send a message directly, or use the provided email and phone number for assistance.
       </div>
     </div>
   </div>
@@ -385,12 +435,17 @@
 
 <!-- section App Download Banner -->
  <section style="background-color: #6292CF;"  class="App_Dawnload_Banner col-12 col-xxl-9 mt-5 rounded-5 p-3  p-xxl-2 position-relative start-50 translate-middle-x d-flex flex-column flex-lg-row justify-content-evenly align-items-center gap-3">
-<div class="d-flex flex-column justify-content-center p-3 align-items-center gap-2 ">
+<div class="d-flex flex-column justify-content-center p-3 align-items-center gap-3 ">
 <h2 class="fs-1 text-white">Your Health, One Tap Away</h2>
 <p class="fs-5 text-white">
     Book appointments, chat with doctors, and manage your health <br> anytime—right from your phone. Download the app now and stay <br> connected wherever you are.
 </p>
-<img class="col-12 col-md-7 col-xxl-auto " src="../../../assets/images/App _Download_Banner/store.png" alt="">
+
+<div class="d-flex flex-column flex-md-row justify-content-lg-start justify-content-center col-12 align-items-center gap-2">
+  <a ><img style="cursor: pointer;" class="col-7 col-md-4 col-lg-auto " src="../../../assets/images/App _Download_Banner/googlePlay.png" alt=""></a>
+  <a ><img style="cursor: pointer;" class="col-7 col-md-4 col-lg-auto " src="../../../assets/images/App _Download_Banner/appleStore.png" alt=""></a>
+</div>
+
 </div>
 
 

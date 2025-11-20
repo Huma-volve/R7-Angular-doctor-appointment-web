@@ -35,7 +35,13 @@
     top: 10%;
 
 }
-
+.fa-solid {
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    cursor: pointer;
+    color: #d60000;
+}
 .accordion-button::after {
     
     background-image: none !important;

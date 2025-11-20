@@ -42,10 +42,8 @@ export class Doctorlist implements OnInit {
   filterlistshown = false;
  ref = inject(ChangeDetectorRef);
 
-  // التخصص المختار من الكروت
   selectedSpecialityId: number | null = null;
 
-  // فلتر الريكوست
   filters = {
   keyword: '',
   specialityId: null as number | null,

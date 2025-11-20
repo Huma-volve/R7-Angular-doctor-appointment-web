@@ -14,6 +14,20 @@ export const AUTH_ROUTES: Routes = [
           ),
       },
       {
+        path: 'otp-validation-register',
+        loadComponent: ()=>
+          import('./components/otp-validation-register/otp-validation-register').then(
+            (m)=> m.OtpValidationRegister
+          )
+      },
+      {
+        path: 'otp-validation-login',
+        loadComponent: ()=>
+          import('./components/otp-validation-login/otp-validation-login').then(
+            (m)=> m.OtpValidationLogin
+          )
+      },
+      {
         path: 'sign-up',
         loadComponent: () =>
           import('./components/sign-up/sign-up').then(
@@ -21,7 +35,7 @@ export const AUTH_ROUTES: Routes = [
           ),
       },
       {
-        path: 'otp-validation',
+        path: 'otp-validation/:PhoneNumber',
         loadComponent: () =>
           import('./components/otp-validation/otp-validation').then(
             (m) => m.OtpValidationComponent

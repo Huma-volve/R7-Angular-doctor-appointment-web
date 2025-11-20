@@ -1,0 +1,38 @@
+<div class="chat-list px-2 overflow-hidden">
+  <div class="d-flex align-items-center mb-2">
+    <h1 class="flex-grow-1 h3">Chat</h1>
+    <small>
+      <i class="fa-regular fa-chart-bar"></i>
+    </small>
+  </div>
+  <div class="search-for-chat mb-2">
+    <div class="d-flex align-items-center gap-1 border rounded py-2 px-3">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input
+      [(ngModel)]="searchText"
+      (input)="onSearch()"
+      type="text" class="form-control border-0" placeholder="Search for chat, doctor">
+    </div>
+  </div>
+  <div class="doctor-chat-list">
+    @for( chat of chats(); track chat.id){
+      <a
+        (click)="clickedChatTap(chat.id); onSelectUser(chat)"
+        >
+        <div class="chat-tap d-flex align-items-center gap-2 mb-2 rounded"
+        [class.activated]="chat.id === id"
+        >
+      <img class="p-2" [src]="chat.avatarUrl ? chat.avatarUrl : './assets/images/user2.png'" alt="User Avatar">
+      <div class="docotr-info flex-grow-1">
+        <p>{{chat.name}}</p>
+        <span>{{chat.lastMessage}}</span>
+      </div>
+      <div class="time text-success">
+        <small class=" d-flex align-items-center">{{chat.updatedAt}}</small>
+        <small>{{chat.unreadCount}}</small>
+      </div>
+    </div>
+      </a>
+    }
+  </div>
+</div>

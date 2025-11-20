@@ -1,0 +1,13 @@
+{
+  "fullName": "Angular",
+  "phoneNumber": "01539487519",
+  "email":"Angular@gmail.com"
+}
+{
+"success": true,
+    "message": "Login successful.",
+    "data": {
+        "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlOGIwNWEwZi1lN2MzLTRhOTgtYjEwZC0zNjNkZGM2ZTkzZjMiLCJ1bmlxdWVfbmFtZSI6IjAxNTM5NDg3NTE5IiwiZmlyc3ROYW1lIjoiQW5ndWxhciIsImxhc3ROYW1lIjoiIiwiYWRkcmVzcyI6IiIsImltZ1VybCI6IiIsImJpcnRoRGF0ZSI6IjAwMDEtMDEtMDEiLCJnZW5kZXIiOiJNYWxlIiwibG9jYXRpb24iOiIiLCJpc05vdGlmaWNhdGlvbnNFbmFibGVkIjoiVHJ1ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiZThiMDVhMGYtZTdjMy00YTk4LWIxMGQtMzYzZGRjNmU5M2YzIiwiZXhwIjoxNzYzMTI1MDE2LCJpc3MiOiJodHRwczovL2N1cmUtZG9jdG9yLWJvb2tpbmcucnVuYXNwLm5ldC8iLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo1MDAwLGh0dHBzOi8vbG9jYWxob3N0OjU1MDAsaHR0cHM6Ly9sb2NhbGhvc3Q6NDIwMCAsaHR0cHM6Ly9jdXJlLWRvY3Rvci1ib29raW5nLnJ1bmFzcC5uZXQvIn0.iLLJg5UV7hd6klWKW-RHXP0Sy6rALBZLwD0xV5lc2i4",
+        "refreshToken": "3JBkgt5j99czjwfxAUW8Jt9fPOofok58T6WqPnHJbKfxunp8gXgz6A6v3aetLOx457UMbxX0dIuta0Cvo8dQNw=="
+    }
+}
