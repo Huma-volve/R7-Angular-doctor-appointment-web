@@ -8,60 +8,171 @@
           <div class="card-header d-flex align-items-center justify-content-between">
             <h3>Choose date and time</h3>
             <div class="calender">
-              <input type="month"  (change)='selectMonth($event)'    name="date" id="appointment-date">
-
+              <input
+                type="month"
+                (change)="selectMonth($event)"
+                name="date"
+                id="appointment-date"
+              />
             </div>
           </div>
           <hr />
           <div class="card-body">
             <div class="d-flex align-items-center justify-content-between flex-wrap my-4">
-              <div tabindex="0" (click)="selecteddate(d)"  *ngFor='let d of weekdays' class="block  d-flex align-items-center justify-content-between flex-column " [class.active]="selectedDay===d " >
-                <span >{{d.dayName}}</span>
-                <span> {{d.dayNum}} </span>
+              <div
+                tabindex="0"
+                (click)="selecteddate(d)"
+                *ngFor="let d of weekdays"
+                class="block d-flex align-items-center justify-content-between flex-column"
+                [class.active]="selectedDay === d"
+              >
+                <span>{{ d.dayName }}</span>
+                <span> {{ d.dayNum }} </span>
+              </div>
+            </div>
+            <div class="d-flex align-items-center justify-content-start gap-4 flex-wrap">
+              <div
+                class="hour"
+                (click)="selecthour(hour)"
+                [class.active]="selectedhour === hour"
+                *ngFor="let hour of hours"
+                tabindex="0"
+              >
+                <span>{{ hour }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex align-items-center justify-content-between">
+            <div
+              *ngIf="selectedDay && selectedMonth && selectedhour"
+              class="summary d-flex align-items-center justify-content-start"
+            >
+              <i class="fa-solid fa-calendar me-2"></i>
+              <p>{{ selectedDay.dayNameLong }},</p>
+              <p>{{ monthName }} {{ selectedDay.dayNum }}</p>
+              <p>-{{ selectedhour }}</p>
+            </div>
+            <div class="d-flex bg-info mt-5 align-items-center justify-content-end align-self-end">
+              <button routerLink="payment-method" class="bookbtn  align-self-end">Book</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+      <div class="col-md-4">
+        <div class="doctor-card">
+          <div class="h-100" *ngIf="doctor ">
+            <div class=" gap-3 mb-5">
+              <div class="d-flex align-items-center justify-content-between ">
+                <div class="fav  ">
+                  <i class="fa-regular fa-heart"></i>
+                </div>
+                <div class="doc-img  d-flex align-items-center justify-content-between flex-column gap-2">
+                 <div class=" overflow-hidden border rounded-circle"  style="width: 113px; height: 113px">
+                  <img
+                  *ngIf="doctor.imgUrl; else noImg"
+                  [src]="doctor.imgUrl"
+                  alt="Doctor photo"
+                  class="w-100 h-100 object-fit-cover"
+                />
+
+                 </div>
+                <h3 class="mb-1 doc-name">{{ doctor.fullName }}</h3>
+                <span class="doc.spechialist">{{doctor.specialities}}</span>
+
+                <ng-template #noImg>
+                  <div
+                    class="w-100 h-100 d-flex align-items-center justify-content-center bg-light"
+                  >
+                    <i class="fa-solid fa-user-doctor fa-xl text-secondary"></i>
+                  </div>
+                </ng-template>
+
+                </div>
+
+
+                <div class="chat">
+                  <i class="fa-regular fa-comment-dots"></i>
+                </div>
+              </div>
+
+
+            </div>
+            <div class="mb-3 card-data d-flex align-items-center justify-content-between">
+             <div class="d-flex align-items-center justify-content-between flex-column gap-2">
+                <div class="icon-card d-flex align-items-center justify-content-center text-center">
+                  <i class="fa-solid fa-user-group"></i>
+
+                </div>
+                <span>{{ doctor.bookingCount }} </span>
+                <span class="text-muted">patients</span>
+              </div>
+              <div class="d-flex align-items-center justify-content-between flex-column gap-2">
+                <div class="icon-card d-flex align-items-center justify-content-center text-center">
+                  <i class="fa-solid fa-user-group"></i>
+
+                </div>
+                <span>{{ doctor.experienceYears }} </span>
+                <span class="text-muted">experience</span>
+              </div>
+              <div class="d-flex align-items-center justify-content-between flex-column gap-2">
+
+                <div class="icon-card d-flex align-items-center justify-content-center text-center">
+                      <i class="fa-solid fa-star"></i>
+                </div>
+                <span>{{ doctor.rating }} </span>
+                <span class="text-muted">rating</span>
+              </div>
+              <div class="d-flex align-items-center justify-content-between flex-column gap-2">
+               <div class="icon-card d-flex align-items-center justify-content-center text-center">
+                <i class="fa-solid fa-message"></i>
+                </div>
+                <span>{{ doctor.reviewsCount }} </span>
+                <span class="text-muted">reviews</span>
               </div>
 
             </div>
-            <div class="d-flex align-items-center justify-content-start gap-4 flex-wrap">
-               <div class="hour " (click)="selecthour(hour)" [class.active]="selectedhour=== hour"   *ngFor="let hour of hours" tabindex="0" >
-                  <span>{{hour}}</span>
-               </div>
 
+            <div class="mb-3">
+              <p class="about fw-bold mb-1 text-muted">About me</p>
+              <p class="small mb-0">
+                {{ doctor.about || 'No description provided yet.' }}
+              </p>
             </div>
 
 
-          </div>
-        <div class="d-flex align-items-center justify-content-between">
-          <div *ngIf="selectedDay && selectedMonth && selectedhour" class="summary d-flex align-items-center justify-content-start">
-              <i class="fa-solid fa-calendar me-2"></i>
-              <p> {{ selectedDay.dayNameLong }}, </p>
-              <p> {{ monthName }} {{ selectedDay.dayNum }}</p>
-              <p> -{{ selectedhour }}</p>
-          </div>
-          <div class="d-flex align-items-center justify-content-end align-self-end" >
-            <button  class="bookbtn align-self-end"> Book</button>
 
-          </div>
+            <div class="mb-3">
+              <p class="small text-muted mb-1">Location</p>
+
+              <div class="rounded-3 overflow-hidden border" style="height: 150px">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  style="border: 0"
+                  loading="lazy"
+                  allowfullscreen
+                  [src]="safeMapUrl"
+
+                ></iframe>
+              </div>
+            </div>
 
 
 
         </div>
-
-        </div>
-
       </div>
-      <div class="col-md-4">
-        <div class="doctor-card">
-
-        </div>
-
-
-      </div>
-
-
+    </div>
   </div>
-
   </div>
-
 </section>
 
-
+<app-main-footer></app-main-footer>
