@@ -19,7 +19,7 @@ import { AuthService } from '../../auth/components/auth.service';
 
 @Component({
   selector: 'app-main-navbar',
-  imports: [CommonModule, RouterLink, SearchAllDoctorsPipe, FormsModule, CutPragraphPipe, A11yModule],
+  imports: [CommonModule, RouterLink, SearchAllDoctorsPipe, FormsModule, A11yModule],
   templateUrl: './main-navbar.html',
   styleUrl: './main-navbar.scss',
   standalone: true,

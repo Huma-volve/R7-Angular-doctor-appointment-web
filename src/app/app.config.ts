@@ -9,12 +9,23 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { globalInterceptor } from './core/interceptors/global-interceptor';
 import { provideToastr } from 'ngx-toastr';
 
+
 export const appConfig: ApplicationConfig = {
   providers: [
-     provideHttpClient(
-     withFetch(),
-      withInterceptors([globalInterceptor]) 
+      provideHttpClient(
+      withFetch(),
+      withInterceptors([globalInterceptor]),
     ),
+
+    provideAnimations(),
+    provideToastr({
+      positionClass: 'toast-top-right',   // <== Top Right
+      timeOut: 4000,
+      closeButton: true,
+      progressBar: true,
+      newestOnTop: true,
+      preventDuplicates: true
+    }),
 
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
@@ -27,10 +38,12 @@ export const appConfig: ApplicationConfig = {
       }),
       withViewTransitions()
 
-   
+
     ),
-   
+
     provideAnimations(),
+
+
 provideToastr({
       timeOut: 6000,
       positionClass: 'toast-bottom-center',

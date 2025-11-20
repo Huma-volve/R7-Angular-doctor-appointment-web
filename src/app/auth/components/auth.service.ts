@@ -61,4 +61,9 @@ export class AuthService{
     localStorage.removeItem('userToken');
   }
 
+  loginWithGoogle(idToken: string){
+    return this.httpClient.post(`api/Identity/Accounts/google-login`, {
+      idToken
+    })
+  }
 }

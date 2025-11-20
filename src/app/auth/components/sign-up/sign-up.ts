@@ -1,11 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject} from '@angular/core';
+import { Component} from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
-import { ToastService } from '../../../core/services/toaster.service';
 
 @Component({
   selector: 'app-sign-up',
