@@ -90,10 +90,13 @@ h3 ,h4{
 
 .doctor-container img{
   width:97px;
+  height: 88px;
+  object-fit: cover;
   border-radius: 10px;
 }
 .data{
   white-space: nowrap;
+  overflow-x: hidden;
 }
 .data h4{
   font-family: var(--main-doc-font);
@@ -209,4 +212,14 @@ input[type="checkbox"]:checked::after ,.sort input[type="radio"]:checked::after{
   background-color: var(--main-color);
   color: white;
   border-color: var(--main-color);
+}
+
+
+
+
+@media (max-width:768px){
+  .fiterinsm{
+    display: none !important;
+  }
+
 }
