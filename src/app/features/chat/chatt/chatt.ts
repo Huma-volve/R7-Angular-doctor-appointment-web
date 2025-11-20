@@ -9,7 +9,7 @@ import { MainNavbar } from "../../../shared/main-navbar/main-navbar";
 
 @Component({
   selector: 'app-chatt',
-  imports: [MainFooter, List, Messages, CommonModule, MainNavbar],
+  imports: [MainFooter, List, Messages, CommonModule,],
   templateUrl: './chatt.html',
   styleUrls: ['./chatt.scss'],
   standalone:true,
