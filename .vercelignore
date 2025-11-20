@@ -1,0 +1,7 @@
+# Node backend
+server.js
+backend/
+node_modules/express
+node_modules/body-parser
+node_modules/cookie-signature
+node_modules/serve-static
