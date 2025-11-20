@@ -45,7 +45,9 @@ export const routes: Routes = [
     path: 'booking',
     loadComponent: () => import('./features/booking/booking').then((c) => c.Booking),
   },
-  {path:"appointment/:id", loadComponent:()=>import('./features/appointment/appointment').then((c)=>c.Appointment)}
+  {
+    path:"appointment/:id", loadComponent:()=>import('./features/appointment/appointment').then((c)=>c.Appointment)
+  }
   ,{
     path: 'contactus',
     loadComponent: () => import('./features/contact-us/contact-us').then((c) => c.ContactUs),
@@ -59,9 +61,15 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./features/chat/chat-routes').then((m) => m.CHAT_ROUTES),
   },
+  
   {
     path: 'payment',
     loadChildren: () =>
       import('./features/payment/payment.routes').then((m) => m.PAYMENT_ROUTES),
+  },
+  
+  {
+    path:'favorite',
+    loadComponent: () => import('./features/favorite/favorite').then((c)=>c.Favorite),
   },
 ];

@@ -7,7 +7,7 @@ import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/
 import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { globalInterceptor } from './core/interceptors/global-interceptor';
-
+import { provideToastr } from 'ngx-toastr';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -31,7 +31,11 @@ export const appConfig: ApplicationConfig = {
     ),
    
     provideAnimations(),
-
+provideToastr({
+      timeOut: 6000,
+      positionClass: 'toast-bottom-center',
+      preventDuplicates: true,
+    }),
     
   ]
 };
