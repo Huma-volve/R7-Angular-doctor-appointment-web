@@ -58,4 +58,56 @@ background-color: white;
 // Animate: Move in Right;
 border: 1px solid  #145DB8 !important;
 }
+.doctor-card{
+  background-color: #F5F6F7;
+
+height: 753;
+
+opacity: 1;
+top: 181px;
+left: 912px;
+border-radius: 20px;
+padding-top: 32px;
+padding-right: 16px;
+padding-bottom: 24px;
+padding-left: 16px;
+gap: 32px;
+
+}
+.chat ,.fav{
+  width: 40;
+height: 40;
+angle: 0 deg;
+opacity: 1;
+border-radius: 24px;
+padding-top: 7px;
+padding-right: 8px;
+padding-bottom: 7px;
+padding-left: 8px;
+gap: 8px;
+background-color: white;
+color: #05162C;
+}
+.doc-name{
+  font-size: 20px;
+}
+.about{
+
+font-weight: 400;
+font-style: Regular;
+font-size:20px;
+line-height: 100%;
+letter-spacing: 0%;
+
+}
+.card-data .icon-card{
+  width: 56px ;
+height: 56px;
+opacity: 1;
+border-radius:50%;
+gap: 12.73px;
+background-color: white;
+color: #05162C;
+
+}
 
