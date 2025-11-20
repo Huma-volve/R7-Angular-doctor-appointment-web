@@ -1,0 +1,19 @@
+# Ignore backend folder completely
+backend/
+
+# Ignore node_modules (optional if in root)
+node_modules/
+
+# Ignore logs
+*.log
+
+# Ignore environment files if you have secrets locally
+.env
+.env.local
+.env.*.local
+
+# Ignore any temporary files or build caches
+dist/
+.DS_Store
+.vscode/
+.idea/
